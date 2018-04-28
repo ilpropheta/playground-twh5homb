@@ -1,0 +1,10 @@
+title: C++ Project
+plan:
+- title: Welcome
+  statement: markdowns/welcome.md
+projects:
+  cpp:
+    root: /cpp-project
+    runner:
+      name: techio/cmake-gcc-runner
+      version: latest
