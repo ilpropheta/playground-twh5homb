@@ -1,4 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
+SET(GCC_CPP17 "-c++1z")
+add_definitions(${GCC_CPP17})
 project (universe)
 add_executable(universe src/UniverseTest.cpp src/Exercises/Universe.h src/Exercises/Universe.cpp)
 
