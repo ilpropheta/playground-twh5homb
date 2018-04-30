@@ -3,4 +3,4 @@ SET(GCC_CPP17 "-std=c++17")
 add_definitions(${GCC_CPP17})
 project (universe)
 add_executable(universe src/UniverseTest.cpp src/Exercises/Universe.h src/Exercises/Universe.cpp)
-
+add_executable(microurl src/UniverseTest.cpp src/Exercises/MicroUrl.h src/Exercises/MicroUrl_Shorten.cpp src/Exercises/MicroUrl_Visit.cpp)
