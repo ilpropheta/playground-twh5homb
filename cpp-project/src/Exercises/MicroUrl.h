@@ -4,7 +4,7 @@
 #include <string>
 #include <map>
 
-struct MicroUrl
+struct MicroUrlInfo
 {
   std::string Original;
   std::string Short;
@@ -17,7 +17,7 @@ public:
   std::string Shorten(const char* url);
   std::string Visit(const char* url); 
 private:
-  std::map<long, MicroUrl> m_db;
+  std::map<long, MicroUrlInfo> m_db;
 };
 
 #endif
