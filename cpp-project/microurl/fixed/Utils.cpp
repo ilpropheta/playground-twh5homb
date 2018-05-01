@@ -1,4 +1,5 @@
 #include "Utils.h"
+#include <algorithm>
 
 std::string MicroUrl::Utils::idToShortURL(long int n)
 {
