@@ -18,4 +18,4 @@ This first excercise is just to stretch your hands and let you explore the envir
 
 Put your hands on the code! Here you can see a few files from our codebase and a simple test that we'll run as soon as you push "Run":
 
-@[Fix MicroUrlService.cpp]({"stubs": ["microurl/src/ver1/MicroUrlService.cpp", "microurl/src/ver1/MicroUrlService.h", "microurl/src/ver1/tests/MakeUrlTest.cpp"],"command": "sh /project/target/run_test.sh ver1"})
+@[Fix MicroUrlService.cpp]({"stubs": ["microurl/src/ver1/MicroUrlService.cpp", "microurl/src/ver1/MicroUrlService.h", "microurl/src/ver1/tests/NiceToMeetYou.cpp"],"command": "sh /project/target/run_test.sh ver1"})
