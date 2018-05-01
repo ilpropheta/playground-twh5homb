@@ -1,11 +1,12 @@
+// { autofold
 #include "MicroUrlService.h"
-#include "IIdGenerator.h"
+#include "DbIdGenerator.h"
 #include "3rdparty/Shortener.h"
 #include <chrono>
 
 using namespace std;
 
-MicroUrlService::MicroUrlService(IIdGenerator* gen) : m_idGenerator(gen)
+MicroUrlService::MicroUrlService() : m_idGenerator(new DbIdGenerator())
 {
 }
 
@@ -14,7 +15,6 @@ MicroUrlService::~MicroUrlService()
 	delete m_idGenerator;
 }
 
-// { autofold
 std::string MicroUrlService::ClickUrl(const char* microUrl)
 {
 	string strMicro(microUrl);
@@ -30,6 +30,7 @@ UrlInfo MicroUrlService::Stats(const char* microUrl) const
 	auto secret = strMicro.substr(strMicro.find_last_of('/') + 1);
 	return m_idToUrl.find(Ext::Shortener::shortURLtoID(secret))->second;
 }
+// }
 
 std::string MicroUrlService::MakeMicroUrl(const char* url)
 {
@@ -39,4 +40,3 @@ std::string MicroUrlService::MakeMicroUrl(const char* url)
 	m_idToUrl[id] = { url, microUrl, 0 };
 	return microUrl;
 }
-// }

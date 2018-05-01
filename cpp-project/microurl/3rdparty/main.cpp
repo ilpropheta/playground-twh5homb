@@ -51,6 +51,10 @@ int main(int argc, char* argv[])
 	else
 	{
 		TechIo::Message("Oops! 🐞", "Something went wrong...");
+		TechIo::Message("Hint 💡", "");
+		std::stringstream ss;
+		ss << CatchOutStream.rdbuf();
+		TechIo::Message("Tests log", ss.str());
 		TechIo::Fail();
 	}
 

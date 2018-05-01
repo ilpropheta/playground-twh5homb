@@ -27,10 +27,19 @@ FILE(GLOB Ver1Headers microurl/src/ver1/*.h)
 FILE(GLOB Ver2Sources microurl/src/ver2/*.cpp)
 FILE(GLOB Ver2Headers microurl/src/ver2/*.h)
 
-add_executable(ver1 microurl/src/ver1/tests/NiceToMeetYou.cpp 
+add_executable(ver1 
+	microurl/src/ver1/tests/NiceToMeetYou.cpp 
 	${ThirdPartyHeaders} ${ThirdPartySources} 
 	${Ver1Headers} ${Ver1Sources})
 
-add_executable(ver2 microurl/src/ver2/tests/MicroUrlInitializationTest.cpp 
+add_executable(ver2 
+	microurl/src/ver2/tests/MicroUrlInitializationTest.cpp 
 	${ThirdPartyHeaders} ${ThirdPartySources} 
 	${Ver2Headers} ${Ver2Sources})
+
+add_executable(ver2_2 
+	microurl/src/ver2/tests/MicroUrlInitializationTest.cpp 
+	microurl/src/ver2/tests/MicroUrlCustomIdGeneratorInitializationTest.cpp
+	${ThirdPartyHeaders} ${ThirdPartySources} 
+	${Ver2Headers} ${Ver2Sources})	
+	

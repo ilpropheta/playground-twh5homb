@@ -2,7 +2,7 @@
 
 long DbIdGenerator::id = 100;
 
-long DbIdGenerator::Generate(const char* token)
+long DbIdGenerator::generate(const char* token)
 {
 	return id++;
 }

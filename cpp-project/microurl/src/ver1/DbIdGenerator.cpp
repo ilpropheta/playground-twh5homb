@@ -1,8 +1,8 @@
 #include "DbIdGenerator.h"
 
-long DbIdGenerator::id = 100;
+long DbIdGenerator::id = 1;
 
-long DbIdGenerator::Generate(const char* token)
+long DbIdGenerator::generate(const char* token)
 {
 	return id++;
 }

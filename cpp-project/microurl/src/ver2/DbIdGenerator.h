@@ -1,9 +1,8 @@
 #pragma once
-#include "IIdGenerator.h"
 
-class DbIdGenerator : public IIdGenerator
+class DbIdGenerator
 {
 	static long id;
 public:
-	long Generate(const char* token);
+	long generate(const char* token);
 };

@@ -1,12 +1,12 @@
 // { autofold
 #include "MicroUrlService.h"
-#include "IIdGenerator.h"
+#include "DbIdGenerator.h"
 #include "3rdparty/Shortener.h"
 #include <chrono>
 
 using namespace std;
 
-MicroUrlService::MicroUrlService(IIdGenerator* gen) : m_idGenerator(gen)
+MicroUrlService::MicroUrlService() : m_idGenerator(new DbIdGenerator())
 {
 }
 
