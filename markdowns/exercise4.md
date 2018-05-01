@@ -19,7 +19,20 @@ Work on `MicroUrlService` and replace `const char*` with `std::string_view` on i
 	 "microurl/src/ver5/MicroUrlService.cpp",
 	 "microurl/src/ver5/tests/StringViewTest.cpp",
 	],
-	"command": "sh /project/target/run_test.sh ver5"})
+	"command": "sh /project/target/run_test.sh ver5 [stringview]"})
+	
+## Bonus Track: avoid temporary strings	in map lookups
+
+IT is worried about our service getting to many requests per second and they decided to implement a very simple load balancing strategy to split the work among several instances of our service. We know it cannot scale but we decide to help optimize it a bit, in the meantime some people of our team will develop a better strategy.
+
+The load balancing strategy is very naive. Basically, the job is sent to a certain instance of the service depending on the first letter of the url. Since IT people regularly attend [Coding Gym](http://coding-gym.org), they know this lookup can be implemented very easily byt using a `std::map`. The only problem is that their function is accepting `std::string_view` and so a conversion to `std::string` is made every time.
+
+Can you help avoid such useless conversion? Accommodate `LoadBalancer` here below:
+
+@[Replace const char* with std::string_view on our service's interface]({"stubs": [ 
+	 "microurl/src/ver5/tests/LoadBalancerTest.cpp",
+	],
+	"command": "sh /project/target/run_test.sh ver5 [lb]"})
 	
 ::: Do you really give up? :(
 

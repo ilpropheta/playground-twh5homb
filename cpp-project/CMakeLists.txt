@@ -56,5 +56,6 @@ add_executable(ver4
 	
 add_executable(ver5	
 	microurl/src/ver5/tests/StringViewTest.cpp
+	microurl/src/ver5/tests/LoadBalancerTest.cpp
 	${ThirdPartyHeaders} ${ThirdPartySources} 
 	${Ver5Headers} ${Ver5Sources})	

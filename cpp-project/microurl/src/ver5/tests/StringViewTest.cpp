@@ -3,7 +3,7 @@
 #include "ver5/MicroUrlService.h"
 // }
 
-TEST_CASE("Check service works with std::string_view", "Replace const char* with std::string_view on MicroUrlService's functions")
+TEST_CASE("Check service works with std::string_view", "Replace const char* with std::string_view on MicroUrlService's functions [stringview]")
 {	
 	const auto urlToShorten = "http://google.com";
 	MicroUrlService service;
