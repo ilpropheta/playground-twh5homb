@@ -34,7 +34,7 @@ UrlInfo MicroUrlService::Stats(const char* microUrl) const
 
 std::string MicroUrlService::MakeMicroUrl(const char* url)
 {
-	auto id = m_idGenerator->generate(url);
+	auto id = m_idGenerator->Generate(url);
 	auto secret = Ext::Shortener::idToShortURL(id);
 	auto microUrl = string("http://micro.url/") + secret;
 	m_idToUrl[id] = { url, microUrl, 0 };
