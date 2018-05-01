@@ -1,7 +1,10 @@
-title: C++ Project
+title: A bit of modern C++ refactoring
 plan:
-- title: Welcome
-  statement: markdowns/welcome.md
+- title: Welcome!
+  statement: markdowns/welcome.md  
+- title: Getting rid of new and delete
+  statement: markdowns/exercise1.md
+  
 projects:
   cpp:
     root: /cpp-project

@@ -2,7 +2,7 @@
 #include "ver1/DbIdGenerator.h"
 #include "ver1/MicroUrlService.h"
 
-TEST_CASE("Make Micro Url", "We check if encoding http://google.com results in https://micro.url/bM [MakeUrl]",)
+TEST_CASE("Very First Test", "It seems our service is getting back plain HTTP urls... [MakeUrl]",)
 {
 	MicroUrlService service(new DbIdGenerator());
 	auto microUrl = service.MakeMicroUrl("http://google.com");
