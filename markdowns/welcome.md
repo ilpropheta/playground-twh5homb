@@ -4,10 +4,10 @@ Fix the code!
 
 # Hands-on Demo
 
-@[Fix this source file]({"stubs": ["microurl/src/ver1/MicroUrlService.cpp"],"command": "sh /project/target/run_test.sh microurl_1"})
+@[Fix this source file]({"stubs": ["microurl/src/ver1/MicroUrlService.cpp", "microurl/src/ver1/tests/MakeUrlTest.cpp"],"command": "sh /project/target/run_test.sh microurl_1"})
 
-::: Show test (any changes won't have effect)
+::: Hidden section
 
-@[Test file that will run]({"stubs": ["microurl/src/ver1/tests/MakeUrlTest.cpp"]})
+Hidden content
 
 :::
