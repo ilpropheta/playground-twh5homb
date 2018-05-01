@@ -14,10 +14,10 @@ std::string Ext::Shortener::idToShortURL(long int n)
 	return shorturl;
 }
 
-long int Ext::Shortener::shortURLtoID(std::string shortURL)
+long int Ext::Shortener::shortURLtoID(const char* shortURL)
 {
 	long int id = 0;
-	for (int i = 0; i < shortURL.length(); i++)
+	for (int i = 0; i < std::char_traits<char>::length(shortURL) ; i++)
 	{
 		if ('a' <= shortURL[i] && shortURL[i] <= 'z')
 			id = id * 62 + shortURL[i] - 'a';

@@ -8,6 +8,8 @@ plan:
   statement: markdowns/exercise2.md
 - title: Structure binding and tuple tricks
   statement: markdowns/exercise3.md
+- title: Viewing strings
+  statement: markdowns/exercise4.md
   
 projects:
   cpp:

@@ -2,7 +2,6 @@
 #include "MicroUrlService.h"
 #include "DbIdGenerator.h"
 #include "3rdparty/Shortener.h"
-#include <chrono>
 
 using namespace std;
 
@@ -19,7 +18,7 @@ std::string MicroUrlService::ClickUrl(const char* microUrl)
 {
 	string strMicro(microUrl);
 	auto secret = strMicro.substr(strMicro.find_last_of('/') + 1);
-	auto& url = m_idToUrl[Ext::Shortener::shortURLtoID(secret)];
+	auto& url = m_idToUrl[Ext::Shortener::shortURLtoID(secret.c_str())];
 	url.Clicks++;
 	return url.OriginalUrl;
 }
@@ -28,7 +27,7 @@ UrlInfo MicroUrlService::Stats(const char* microUrl) const
 {
 	string strMicro(microUrl);
 	auto secret = strMicro.substr(strMicro.find_last_of('/') + 1);
-	return m_idToUrl.find(Ext::Shortener::shortURLtoID(secret))->second;
+	return m_idToUrl.find(Ext::Shortener::shortURLtoID(secret.c_str()))->second;
 }
 // }
 

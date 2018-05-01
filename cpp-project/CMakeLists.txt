@@ -29,6 +29,8 @@ FILE(GLOB Ver3Sources microurl/src/ver3/*.cpp)
 FILE(GLOB Ver3Headers microurl/src/ver3/*.h)
 FILE(GLOB Ver4Sources microurl/src/ver4/*.cpp)
 FILE(GLOB Ver4Headers microurl/src/ver4/*.h)
+FILE(GLOB Ver5Sources microurl/src/ver5/*.cpp)
+FILE(GLOB Ver5Headers microurl/src/ver5/*.h)
 
 add_executable(ver1 
 	microurl/src/ver1/tests/NiceToMeetYou.cpp 
@@ -51,3 +53,8 @@ add_executable(ver4
 	microurl/src/ver4/tests/UrlInfoCompareTest.cpp
 	${ThirdPartyHeaders} ${ThirdPartySources} 
 	${Ver4Headers} ${Ver4Sources})	
+	
+add_executable(ver5	
+	microurl/src/ver5/tests/StringViewTest.cpp
+	${ThirdPartyHeaders} ${ThirdPartySources} 
+	${Ver5Headers} ${Ver5Sources})	

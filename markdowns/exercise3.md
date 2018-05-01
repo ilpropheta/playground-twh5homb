@@ -1,12 +1,12 @@
-# Structure binding and tuple tricks
+# Structure bindings and tuple tricks
 
 ## Structure Binding
 
-## std::tie trick
+## `std::tie` trick
 
 ## Hands on!
 
-It's time to check the stats of a shortened url! Complete the test below by using structure binding:
+It's time to check the stats of a shortened url! Complete the test below by using structure bindings:
 
 @[Use structure bindings. operator< made easy with std::tie]({"stubs": [
 	 "microurl/src/ver4/tests/UrlInfoTest.cpp",
