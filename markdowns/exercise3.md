@@ -17,7 +17,7 @@ It's time to check the stats of a shortened url! Complete the test below by usin
 Our clients start asking how to compare url information...are you able to fix this test by properly implementing `operator<`?
 
 @[Use structure bindings. operator< made easy with std::tie]({"stubs": [
-	"microurl/src/ver4/tests/UrlInfoTest.cpp",
+	"microurl/src/ver4/tests/UrlInfoCompareTest.cpp",
 	"microurl/src/ver4/MicroUrlInfo.h",
 	],
 	"command": "sh /project/target/run_test.sh ver4 less"})
@@ -45,7 +45,7 @@ Using structure bindings on `UrlInfoTest.cpp`:
 
 It's a pity we cannot just `std::ignore` a field, isn't it?
 
-Implementing `operator<` by using `std::tie`:
+Implementing `operator<` in `MicroUrlInfo.h` by using `std::tie`:
 
 ```cpp
 inline auto AsTuple(const UrlInfo& info)
