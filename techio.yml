@@ -4,7 +4,7 @@ plan:
   statement: markdowns/welcome.md  
 - title: Getting rid of new and delete
   statement: markdowns/exercise1.md
- - title: Use the Interfaces, Luke
+- title: Use the Interfaces, Luke
   statement: markdowns/exercise2.md
   
 projects:
