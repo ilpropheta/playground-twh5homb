@@ -14,18 +14,7 @@ MicroUrlService::~MicroUrlService()
 {
 	delete m_idGenerator;
 }
-// {
 
-std::string MicroUrlService::MakeMicroUrl(const char* url)
-{
-	auto id = m_idGenerator->Generate(url);
-	auto secret = Ext::Shortener::idToShortURL(id);
-	auto microUrl = string("http://micro.url/") + secret;
-	m_idToUrl[id] = { url, microUrl, 0 };
-	return microUrl;
-}
-
-// { autofold
 std::string MicroUrlService::ClickUrl(const char* microUrl)
 {
 	string strMicro(microUrl);
@@ -41,4 +30,13 @@ UrlInfo MicroUrlService::Stats(const char* microUrl) const
 	auto secret = strMicro.substr(strMicro.find_last_of('/') + 1);
 	return m_idToUrl.find(Ext::Shortener::shortURLtoID(secret))->second;
 }
-// {
+// }
+
+std::string MicroUrlService::MakeMicroUrl(const char* url)
+{
+	auto id = m_idGenerator->Generate(url);
+	auto secret = Ext::Shortener::idToShortURL(id);
+	auto microUrl = string("http://micro.url/") + secret;
+	m_idToUrl[id] = { url, microUrl, 0 };
+	return microUrl;
+}
