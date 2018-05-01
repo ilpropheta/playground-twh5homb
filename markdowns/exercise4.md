@@ -35,4 +35,11 @@ std::string MicroUrlService::ClickUrl(std::string_view microUrl)
 }
 
 ```
+
+The idim to construct a `std::string` from `std::string_view` is simple:
+
+```cpp
+std::string_view strView = ...;
+std::string str {strView.data(), strView.size()};
+```
 :::
