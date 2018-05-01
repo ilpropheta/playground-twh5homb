@@ -29,7 +29,7 @@ The load balancing strategy is very naive. Basically, the job is sent to a certa
 
 Can you help avoid such useless conversion? Accommodate `LoadBalancer` here below:
 
-@[Replace const char* with std::string_view on our service's interface]({"stubs": [ 
+@[Use a transparent comparator]({"stubs": [ 
 	 "microurl/src/ver5/tests/LoadBalancerTest.cpp",
 	],
 	"command": "sh /project/target/run_test.sh ver5 [lb]"})

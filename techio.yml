@@ -10,6 +10,8 @@ plan:
   statement: markdowns/exercise3.md
 - title: Viewing strings
   statement: markdowns/exercise4.md
+- title: A functional touch
+  statement: markdowns/exercise5.md
   
 projects:
   cpp:

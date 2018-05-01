@@ -31,6 +31,8 @@ FILE(GLOB Ver4Sources microurl/src/ver4/*.cpp)
 FILE(GLOB Ver4Headers microurl/src/ver4/*.h)
 FILE(GLOB Ver5Sources microurl/src/ver5/*.cpp)
 FILE(GLOB Ver5Headers microurl/src/ver5/*.h)
+FILE(GLOB Ver6Sources microurl/src/ver6/*.cpp)
+FILE(GLOB Ver6Headers microurl/src/ver6/*.h)
 
 add_executable(ver1 
 	microurl/src/ver1/tests/NiceToMeetYou.cpp 
@@ -59,3 +61,8 @@ add_executable(ver5
 	microurl/src/ver5/tests/LoadBalancerTest.cpp
 	${ThirdPartyHeaders} ${ThirdPartySources} 
 	${Ver5Headers} ${Ver5Sources})	
+	
+add_executable(ver6	
+	microurl/src/ver6/tests/VisitTest.cpp
+	${ThirdPartyHeaders} ${ThirdPartySources} 
+	${Ver6Headers} ${Ver6Sources})		
