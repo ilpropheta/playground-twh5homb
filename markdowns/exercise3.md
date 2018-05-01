@@ -12,7 +12,7 @@ It's time to check the stats of a shortened url! Complete the test below by usin
 	 "microurl/src/ver4/tests/UrlInfoTest.cpp",
 	 "microurl/src/ver4/MicroUrlInfo.h",
 	],
-	"command": "sh /project/target/run_test.sh ver4 binding"})
+	"command": "sh /project/target/run_test.sh ver4 [binding]"})
 
 Our clients start asking how to compare url information...are you able to fix this test by properly implementing `operator<`?
 
@@ -20,7 +20,7 @@ Our clients start asking how to compare url information...are you able to fix th
 	"microurl/src/ver4/tests/UrlInfoCompareTest.cpp",
 	"microurl/src/ver4/MicroUrlInfo.h",
 	],
-	"command": "sh /project/target/run_test.sh ver4 less"})
+	"command": "sh /project/target/run_test.sh ver4 [less]"})
 	
 ::: Do you really give up? :(
 
