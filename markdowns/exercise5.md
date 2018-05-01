@@ -7,7 +7,7 @@
 ## Hands on!
 
 @[Implement a visit function in our service]({"stubs": [ 
-	 "microurl/src/ver6/tests/MicroUrlService.h",
+	 "microurl/src/ver6/MicroUrlService.h",
 	 "microurl/src/ver6/tests/VisitTest.cpp",
 	],
 	"command": "sh /project/target/run_test.sh ver6"})
