@@ -19,14 +19,15 @@ public:
 	std::string ClickUrl(std::string_view microUrl);
 	UrlInfo Stats(std::string_view microUrl) const;
 // }
+
 	template<typename Action>
 	void VisitMicroUrls(Action action) const;
-// { autofold
+
 private:
 	std::unique_ptr<IIdGenerator> m_idGenerator;
 	std::unordered_map<long, UrlInfo> m_idToUrl;
 };
-// }
+
 template<typename Action>
 void MicroUrlService::VisitMicroUrls(Action action) const
 {

@@ -12,15 +12,19 @@ TEST_CASE("Check service visit of stored urls work", "Implement MicroUrlService:
 		"http://italiancpp.org", 
 		"http://coding-gym.org" };
 	
-	std::vector<std::string> shortened(urls.size());
-	transform(begin(urls), end(urls), begin(shortened), [&](auto& url) {
-		return service.MakeMicroUrl(url);
-	});
+	std::vector<std::pair<std::string, std::string>> expected;
+	for (auto& url : urls)
+		expected.emplace_back(url, service.MakeMicroUrl(url));
 	
-	auto i = 0;
+	// you feel brave? Apply transform instead:
+	/*transform(begin(urls), end(urls), begin(expected), [&](auto& url) -> std::pair<std::string, std::string> {
+		return { url, service.MakeMicroUrl(url) };
+	});*/
+	
+	std::vector<std::pair<std::string, std::string>> actual;
 	service.VisitMicroUrls([&](auto& url) {
-		REQUIRE(url.MicroUrl == shortened[i]);
-		REQUIRE(url.OriginalUrl == urls[i++]);
+		actual.emplace_back(url.OriginalUrl, url.MicroUrl);
 	});
-	REQUIRE(i == 3);
+
+	REQUIRE ( true == std::is_permutation(begin(expected), end(expected), begin(actual)));
 }
