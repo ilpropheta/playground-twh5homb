@@ -39,7 +39,7 @@ add_executable(ver2
 
 add_executable(ver2_2 
 	microurl/src/ver2/tests/MicroUrlInitializationTest.cpp 
-	microurl/src/ver2/tests/MicroUrlCustomIdGeneratorInitializationTest.cpp
+	microurl/src/ver2/tests/MicroUrlCustomIdGeneratorTest.cpp
 	${ThirdPartyHeaders} ${ThirdPartySources} 
 	${Ver2Headers} ${Ver2Sources})	
 	
