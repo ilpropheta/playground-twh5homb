@@ -6,4 +6,8 @@ Fix the code!
 
 @[Fix this source file]({"stubs": ["microurl/src/ver1/MicroUrlService.cpp"],"command": "sh /project/target/run_test.sh microurl_1"})
 
-@[Fix this source file]({"stubs": ["microurl/src/ver1/tests/MakeUrlTest.cpp"]})
+::: Show test (any changes won't have effect)
+
+@[Test file that will run]({"stubs": ["microurl/src/ver1/tests/MakeUrlTest.cpp"]})
+
+:::
