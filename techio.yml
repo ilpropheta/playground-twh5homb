@@ -6,7 +6,7 @@ plan:
   statement: markdowns/exercise1.md
 - title: Use the Interfaces, Luke
   statement: markdowns/exercise2.md
-- Structure binding and tuple tricks
+- title: Structure binding and tuple tricks
   statement: markdowns/exercise3.md
   
 projects:
