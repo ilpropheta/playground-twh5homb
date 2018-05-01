@@ -20,8 +20,8 @@ struct StubIdGenerator : IIdGenerator
 
 TEST_CASE("Passing a Stub IdGenerator", "Make this work")
 {
-	//auto stub = make_unique<StubIdGenerator>(1);
-	//MicroUrlService service(move(stub));
+	//auto stub = std::make_unique<StubIdGenerator>(1);
+	//MicroUrlService service(std::move(stub));
 	//auto microUrl = service.MakeMicroUrl("http://google.com");
 	//REQUIRE(microUrl == "https://micro.url/b"); // id '1' will be mapped to 'b'
 }
