@@ -16,10 +16,21 @@ You've just learnt how good smart pointers are and you have found a good fit for
 
 In the dusty corners of **MicroUrl**, we have found `IIdGenerator.h`, probably a first attempt that a former developer did to extract the id generation concept into an interface.
 
-It's time to fulfill such effort!
+It's time to fulfill such effort and complete such job!
 
-Refactor `MicroUrlService` and write a new constructor that gets a `unique_ptr<IIdGenerator>`.
+You tasks:
 
-Make `MicroUrlCustomIdGeneratorInitializationTest.cpp` work.
+- Make `DbIdGenerator` implement `IIdGenerator`
+- Make `MicroUrlService` use `IIdGenerator`
+- Make possible to pass to `MicroUrlService` a custom `IIdGenerator`
 
-@[Refactor all these files to use unique_ptr]({"stubs": ["microurl/src/ver2/MicroUrlService.h", "microurl/src/ver2/MicroUrlService.cpp", "microurl/src/ver2/tests/MicroUrlCustomIdGeneratorInitializationTest.cpp"],"command": "sh /project/target/run_test.sh ver2_2"})
+Lets' go:
+
+@[Make possible to pass a custom IdGenerator]({"stubs": [
+	 "microurl/src/ver2/tests/MicroUrlCustomIdGeneratorInitializationTest.cpp", 
+	 "microurl/src/ver2/DbIdGenerator.h", 
+	 "microurl/src/ver2/IIdGenerator.h", 
+	 "microurl/src/ver2/MicroUrlService.h", 
+	 "microurl/src/ver2/MicroUrlService.cpp"
+	],
+	"command": "sh /project/target/run_test.sh ver2_2"})
