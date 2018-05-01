@@ -15,8 +15,7 @@ You tasks:
 Lets' go:
 
 @[Use the interface, Luke!]({"stubs": [
-	 "microurl/src/ver3/DbIdGenerator.h",
-	 "microurl/src/ver3/DbIdGenerator.cpp",
+	 "microurl/src/ver3/DbIdGenerator.h",	 
 	 "microurl/src/ver3/IIdGenerator.h",
 	 "microurl/src/ver3/tests/MicroUrlCustomIdGeneratorTest.cpp",
 	 "microurl/src/ver3/MicroUrlService.h",

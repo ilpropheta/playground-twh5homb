@@ -1,6 +1,8 @@
+// { autofold
 #include "3rdparty/Catch.h"
-#include "ver2/MicroUrlService.h"
-#include "ver2/IIdGenerator.h"
+#include "ver3/MicroUrlService.h"
+#include "ver3/IIdGenerator.h"
+// }
 
 struct StubIdGenerator : IIdGenerator
 {

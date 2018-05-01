@@ -1,5 +1,7 @@
+// { autofold
 #include "3rdparty/Catch.h"
 #include "ver2/MicroUrlService.h"
+// }
 
 TEST_CASE("Initialization Test", "This should keep working")
 {
