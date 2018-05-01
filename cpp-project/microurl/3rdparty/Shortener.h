@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
 
-namespace MicroUrl
+namespace Ext
 {
-	namespace Utils
+	namespace Shortener
 	{		
 		std::string idToShortURL(long int n);
 		long int shortURLtoID(std::string shortURL);

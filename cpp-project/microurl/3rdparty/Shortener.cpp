@@ -1,7 +1,7 @@
-#include "Utils.h"
+#include "Shortener.h"
 #include <algorithm>
 
-std::string MicroUrl::Utils::idToShortURL(long int n)
+std::string Ext::Shortener::idToShortURL(long int n)
 {
 	char map[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	std::string shorturl;
@@ -14,7 +14,7 @@ std::string MicroUrl::Utils::idToShortURL(long int n)
 	return shorturl;
 }
 
-long int MicroUrl::Utils::shortURLtoID(std::string shortURL)
+long int Ext::Shortener::shortURLtoID(std::string shortURL)
 {
 	long int id = 0;
 	for (int i = 0; i < shortURL.length(); i++)
