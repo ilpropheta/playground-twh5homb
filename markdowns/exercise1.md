@@ -30,7 +30,7 @@ Lets' go:
 	 "microurl/src/ver2/DbIdGenerator.h",
 	 "microurl/src/ver2/DbIdGenerator.cpp",
 	 "microurl/src/ver2/IIdGenerator.h", 
-	 "microurl/src/ver2/tests/MicroUrlCustomIdGenerator.cpp",
+	 "microurl/src/ver2/tests/MicroUrlCustomIdGeneratorTest.cpp",
 	 "microurl/src/ver2/MicroUrlService.h",	 
 	],
 	"command": "sh /project/target/run_test.sh ver2_2"})
