@@ -14,6 +14,10 @@ Imagine your company has just acquired **MicroUrl** a revolutionary url shortner
 
 This first excercise is just to stretch your hands and let you explore the environment.
 
+## Structure of the project
+
+## Hands on!
+
 **MicroUrl** is quite old and it gets back plain HTTP urls. Fix the function formatting urls in order to return HTTP**S** urls.
 
 Put your hands on the code! Here you can see a few files from our codebase and a simple test that we'll run as soon as you push "Run":
