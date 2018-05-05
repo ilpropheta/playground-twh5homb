@@ -31,5 +31,7 @@ private:
 template<typename Action>
 void MicroUrlService::VisitMicroUrls(Action action) const
 {
-	throw std::logic_error("missing function");
+	for (auto&[id, url] : m_idToUrl)
+		action(url);
+	//throw std::logic_error("missing function");
 }

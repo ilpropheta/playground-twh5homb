@@ -64,5 +64,6 @@ add_executable(ver5
 	
 add_executable(ver6	
 	microurl/src/ver6/tests/VisitTest.cpp
+	microurl/src/ver6/tests/StatefulVisitTest.cpp
 	${ThirdPartyHeaders} ${ThirdPartySources} 
 	${Ver6Headers} ${Ver6Sources})		

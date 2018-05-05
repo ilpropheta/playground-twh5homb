@@ -3,7 +3,7 @@
 #include "ver6/MicroUrlService.h"
 // }
 
-TEST_CASE("Check service visit of stored urls work", "Implement MicroUrlService::Visit")
+TEST_CASE("Check service visit of stored urls work", "Implement MicroUrlService::VisitMicroUrls [visit]")
 {	
 	MicroUrlService service;
 	
@@ -16,9 +16,9 @@ TEST_CASE("Check service visit of stored urls work", "Implement MicroUrlService:
 	for (auto& url : urls)
 		expected.emplace_back(url, service.MakeMicroUrl(url));
 	
-	// you feel brave? Apply transform instead:
-	/*transform(begin(urls), end(urls), begin(expected), [&](auto& url) -> std::pair<std::string, std::string> {
-		return { url, service.MakeMicroUrl(url) };
+	// do you feel brave? Replace for with transform:
+	/*transform(begin(urls), end(urls), begin(expected), [&](auto& url){
+		// ... ?
 	});*/
 	
 	std::vector<std::pair<std::string, std::string>> actual;
