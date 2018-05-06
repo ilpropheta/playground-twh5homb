@@ -1,5 +1,5 @@
 #include "Utils.h"
-#include "3rdparty\Shortener.h"
+#include "3rdparty/Shortener.h"
 
 long UrlToId(std::string_view microUrl)
 {
