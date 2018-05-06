@@ -15,7 +15,6 @@ MicroUrlService::MicroUrlService() : m_idGenerator(std::make_unique<DbIdGenerato
 }
 
 MicroUrlService::~MicroUrlService() = default;
-// }
 
 long UrlToId(string_view microUrl)
 {
@@ -33,21 +32,13 @@ std::optional<UrlInfo> TryLookup(MapType& idToUrl, string_view microUrl, GoodAct
 	}
 	return nullopt;
 }
-
-optional<UrlInfo> NotExpired(const UrlInfo& url)
-{
-	return url;
-}
+// }
 
 std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
 {
-	return TryLookup(m_idToUrl, microUrl, [](auto& url) { url.Clicks++; })
-		|| [](auto& url) {return url.OriginalUrl; };
-		
-	
-	/*if (auto opt = TryLookup(m_idToUrl, microUrl, [](auto& url) { url.Clicks++; }); opt)
-		return opt->OriginalUrl;
-	return nullopt;*/
+	return 
+		TryLookup(m_idToUrl, microUrl, [](auto& url) { url.Clicks++; })
+		|| &UrlInfo::OriginalUrl;
 }
 
 std::optional<UrlInfo> MicroUrlService::Stats(std::string_view microUrl) const
@@ -55,7 +46,7 @@ std::optional<UrlInfo> MicroUrlService::Stats(std::string_view microUrl) const
 	return TryLookup(m_idToUrl, microUrl, [](auto&) {});
 }
 
-std::string MicroUrlService::MakeMicroUrl(std::string_view url)
+std::string MicroUrlService::MakeMicroUrl(std::string_view url, std::chrono::duration<int> urlDuration)
 {
 	auto id = m_idGenerator->Generate(url.data());
 	auto secret = Ext::Shortener::idToShortURL(id);

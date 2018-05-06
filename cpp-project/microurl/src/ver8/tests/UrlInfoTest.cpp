@@ -1,33 +1,27 @@
 // { autofold
 #include "3rdparty/Catch.h"
-#include "ver7/MicroUrlService.h"
+#include "ver8/MicroUrlService.h"
 // }
 
-TEST_CASE("Checking stats", "Let's adapt this test [optional]")
+TEST_CASE("Expired urls shouldn't be clickable", "When an url expires, MicroUrlService::ClickUrl should return nullopt")
 {	
 	const auto urlToShorten = "http://italiancpp.org/win100million.believeme";
 	MicroUrlService service;
-	auto microUrl = service.MakeMicroUrl(urlToShorten);
+	auto alreadyExpiredMicroUrl = service.MakeMicroUrl(urlToShorten, -std::chrono::hours(1));
+	auto original = service.ClickUrl(alreadyExpiredMicroUrl);
+	REQUIRE(original == std::nullopt);
 
-	auto urlInfo = service.Stats(microUrl);
-	REQUIRE (urlInfo != std::nullopt);
-	REQUIRE (urlInfo->Clicks == 0);
-	REQUIRE (urlInfo->OriginalUrl == urlToShorten);
-	REQUIRE (urlInfo->MicroUrl == microUrl);
-
-	REQUIRE (urlToShorten == *service.ClickUrl(microUrl.c_str()));
-	REQUIRE (urlToShorten == *service.ClickUrl(microUrl.c_str()));
-		
-	urlInfo = service.Stats(microUrl);
-	 REQUIRE(urlInfo->Clicks == 2);
+	auto oneDayLongMicroUrl = service.MakeMicroUrl(urlToShorten, std::chrono::hours(24));
+	original = service.ClickUrl(oneDayLongMicroUrl);
+	REQUIRE(original != std::nullopt);
 }
 
-TEST_CASE("Invalid urls", "Checking against invalid urls [optional]")
+TEST_CASE("Invalid urls", "Checking against invalid urls")
 {
-	/*MicroUrlService service;
+	MicroUrlService service;
 	auto urlInfo = service.Stats("http://dontknow.com");
 	REQUIRE(urlInfo == std::nullopt);
 
-	auto urlInfo = service.ClickUrl("http://dontknow.com");
-	REQUIRE(urlInfo == std::nullopt);*/
+	auto original = service.ClickUrl("http://dontknow.com");
+	REQUIRE(original == std::nullopt);
 }

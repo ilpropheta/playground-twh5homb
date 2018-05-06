@@ -15,15 +15,14 @@ public:
 	MicroUrlService();
 	MicroUrlService(std::unique_ptr<IIdGenerator>);
 	~MicroUrlService();
-
-	std::string MakeMicroUrl(std::string_view url);
 // }
+	std::string MakeMicroUrl(std::string_view url, std::chrono::duration<int> urlDuration = std::chrono::hours(24)*365);
+// { autofold
 	std::optional<std::string> ClickUrl(std::string_view microUrl);
 	std::optional<UrlInfo> Stats(std::string_view microUrl) const;
-// { autofold
+
 	template<typename Action>
 	void VisitMicroUrls(Action action) const;
-
 private:
 	std::unique_ptr<IIdGenerator> m_idGenerator;
 	std::unordered_map<long, UrlInfo> m_idToUrl;

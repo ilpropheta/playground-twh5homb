@@ -1,5 +1,6 @@
 #pragma once
 #include <optional>
+#include <functional>
 
 // very simple, just to explain the concept
 // (e.g. can be optimized to save temporaries)
@@ -19,5 +20,5 @@ auto wrap(T value)
 template<typename T, typename F>
 auto operator||(std::optional<T> opt, F f)
 {
-	return opt ? wrap(f(opt.value())) : std::nullopt;
+	return opt ? wrap(std::invoke(f, opt.value())) : std::nullopt;
 }

@@ -22,13 +22,13 @@ long UrlToId(string_view microUrl)
 	return Ext::Shortener::shortURLtoID(secret.data());
 }
 
-std::optional<std::string> MicroUrlService::ClickUrl([[maybe_unused]]std::string_view microUrl)
+std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
 {
 	// implement this properly
 	return {};
 }
 
-std::optional<UrlInfo> MicroUrlService::Stats([[maybe_unused]]std::string_view microUrl) const
+std::optional<UrlInfo> MicroUrlService::Stats(std::string_view microUrl) const
 {
 	// implement this properly
 	return {};

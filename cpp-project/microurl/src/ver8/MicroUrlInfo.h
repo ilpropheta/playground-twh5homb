@@ -2,6 +2,7 @@
 #pragma once
 #include <string>
 #include <tuple>
+#include <chrono>
 // }
 
 struct UrlInfo
@@ -9,6 +10,8 @@ struct UrlInfo
 	std::string OriginalUrl;
 	std::string MicroUrl;
 	int Clicks;
+	std::chrono::system_clock::time_point Creation;
+	std::chrono::system_clock::time_point Expiration;
 };
 
 inline auto AsTuple(const UrlInfo& info)

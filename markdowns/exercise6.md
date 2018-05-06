@@ -14,16 +14,32 @@
 	"command": "sh /project/target/run_test.sh ver7 [optional]"})
 
 	
+## Bonus: chaining `optional`
+
+## Bonus: `std::invoke` finesse
+	
+An intern got excited about chaining `optional`, however she would love simplifying the code above this way:
+	
+```cpp	
+std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
+{
+	return 
+		TryLookup(m_idToUrl, microUrl, [](auto& url) { url.Clicks++; })
+		|| &UrlInfo::OriginalUrl; // <-- instead of lambda
+}
+```
+
+Can you slightly change `operator||` to accommodate such request?
+
 ::: Do you really give up? :(
 
-
+The trick consists in using `std::invoke`:
 
 ```cpp
-template<typename Action>
-void MicroUrlService::VisitMicroUrls(Action action) const
+template<typename T, typename F>
+auto operator||(std::optional<T> opt, F f)
 {
-	for (auto&[id, url] : m_idToUrl)
-		action(url);
+	return opt ? wrap(std::invoke(f, opt.value())) : std::nullopt;
 }
 ```
 :::
