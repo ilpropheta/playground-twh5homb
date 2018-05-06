@@ -12,6 +12,8 @@ plan:
   statement: markdowns/exercise4.md
 - title: A functional touch
   statement: markdowns/exercise5.md
+- title: Invalid urls
+  statement: markdowns/exercise6.md
   
 projects:
   cpp:

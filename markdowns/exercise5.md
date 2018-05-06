@@ -2,7 +2,7 @@
 
 ## Lambdas, lambdas everywhere
 
-
+- parlare anche di std::function
 
 ## Hands on!
 
