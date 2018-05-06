@@ -14,6 +14,10 @@ plan:
   statement: markdowns/exercise5.md
 - title: Invalid urls
   statement: markdowns/exercise6.md
+- title: Urls expiration
+  statement: markdowns/exercise7.md
+- title: Handling different url access status
+  statement: markdowns/exercise8.md
   
 projects:
   cpp:
