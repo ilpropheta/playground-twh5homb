@@ -83,7 +83,6 @@ shared_ptr<Resource> owner1 = Acquire();
 
 `weak_ptr` models temporary ownership: when an object needs to be accessed only if it exists, and it may be deleted at any time by someone else, `weak_ptr` is used to track the object, and it is converted to `shared_ptr` to assume temporary ownership. If the original `shared_ptr` is destroyed at this time, the object's lifetime is extended until the temporary `shared_ptr` is destroyed as well.
 
-
 ### Hands on!
 
 You've just learnt how good smart pointers are and you want to impress your boss by using them in **MicroUrl**.
@@ -91,3 +90,55 @@ You've just learnt how good smart pointers are and you want to impress your boss
 It seems there is a really good fit for `unique_ptr`: `MicroUrlService` is manually managing `m_idGenerator`'s lifetime. You have to use `std::unique_ptr<IIdGenerator>` instead:
 
 @[Replace manual resource managing with unique_ptr]({"stubs": ["microurl/src/ver2/MicroUrlService.h", "microurl/src/ver2/MicroUrlService.cpp", "microurl/src/ver2/tests/MicroUrlInitializationTest.cpp"],"command": "sh /project/target/run_test.sh ver2"})
+
+## Bonus: using smart pointers with incomplete types
+
+Undefined behavior can occur when you have an **incomplete** type and you call delete on it:
+
+```cpp
+class A; // class forwarding
+A* a = ...;
+delete a;
+```
+
+The above is legal code. It will compile. Your compiler may or may not emit a warning for above code like the above. When it executes, bad things will probably happen. If you're very lucky your program will crash. However a more probable outcome is that your program will silently leak memory as ~A() won't be called.
+
+Using smart pointers, when it is necessary to have a complete type, you get a compile-time error if you try to use the smart pointer with an incomplete type at that point. If we have this scenario:
+
+```cpp
+class DbIdGenerator; // class forwarding
+
+class MicroUrlService
+{
+    //...
+    unique_ptr<DbIdGenerator> m_idGenerator;
+};
+```
+
+`MicroUrlService` will win an automatically-generated destructor, that is **inline** (e.g. its body is generated in the header file) that will require to know how to destroy `DbIdGenerator`. For this reason we have, at least, to declare a destructor:
+
+```cpp
+class DbIdGenerator; // class forwarding
+
+class MicroUrlService
+{
+public:
+    ~MicroUrlService() // <-- declared by us
+    //...
+private:
+    unique_ptr<DbIdGenerator> m_idGenerator;
+};
+```
+
+This way the compiler will just pass on. On the cpp file we can just `default` the implementation:
+
+```cpp
+DbIdGenerator::~DbIdGenerator() = default;
+```
+
+This is a powerful idiom to remember.
+
+Continue reading:
+
+* [Incomplete types and `shared_ptr` / `unique_ptr`](https://howardhinnant.github.io/incomplete.html)
+* [How to implement the pimpl idiom by using unique_ptr](https://www.fluentcpp.com/2017/09/22/make-pimpl-using-unique_ptr/)
