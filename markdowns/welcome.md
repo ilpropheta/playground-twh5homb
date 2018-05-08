@@ -4,6 +4,8 @@
 
 Welcome to my first interactive workshop using this platform!
 
+This playground serves as an interactive environment to people attending this workshop at the Italian C++ Meetup in Modena on June 14.
+
 I'll show you some "must know" features and idioms of **post**-modern C++. I like referring to this era of C++ development with "Post-" prefix because "Modern" was introduced more than 17 years ago with [Alexandrescu's book](https://en.wikipedia.org/wiki/Modern_C%2B%2B_Design).
 
 You'll have the opportunity to put your hands on some code by refactoring a small existing codebase. The exercises are very simple and they are intended to let you play a bit with the code.
