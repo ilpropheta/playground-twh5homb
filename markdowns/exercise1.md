@@ -72,7 +72,7 @@ shared_ptr<Resource> owner1 = Acquire();
     }
     // 2 owners here
 }
-// 1 owners here
+// 1 owner here
 
 // imagine  owner1 goes out of scope: the resource is finally released
 ```
@@ -115,7 +115,7 @@ class MicroUrlService
 };
 ```
 
-`MicroUrlService` will win an automatically-generated destructor, that is **inline** (e.g. its body is generated in the header file) that will require to know how to destroy `DbIdGenerator`. For this reason we have, at least, to declare a destructor:
+`MicroUrlService` will win an automatically-generated destructor, that is **inline** (e.g. its body is generated in the header file) and then will require to know how to destroy `DbIdGenerator`. For this reason we have, at least, to declare a destructor:
 
 ```cpp
 class DbIdGenerator; // class forwarding
