@@ -47,7 +47,7 @@ This first excercise is just to stretch your hands and let you explore the envir
 
 ## Hands on!
 
-**MicroUrl** is quite old and it gets back plain HTTP urls. Your boos heard that Google Chrome will mark all HTTP sites as 'not secure' starting in July and he asks you to fix such problem.
+**MicroUrl** is quite old and it gets back plain HTTP urls. Your boss heard that Google Chrome will mark all HTTP sites as 'not secure' starting in July and he asked you to fix such problem.
 
 Change the following function accordingly and make the test pass:
 
