@@ -93,7 +93,9 @@ int r, g, b;
 tie(r, g, b, std::ignore) = ReadRGBA(); // I don't need alpha
 ```
 
-In general, `std::tie` is useful when we need to create a *light* tuple on the fly because we need to use tuple capabilities. A common idiom consists in implementing **lexicographical comparison** in terms of `std::tie`:
+In general, `std::tie` is useful when we need to create a *light* tuple on the fly and use tuple's capabilities. 
+
+A common idiom consists in implementing **lexicographical comparison**:
 
 ```cpp
 struct S 
