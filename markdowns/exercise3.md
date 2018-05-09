@@ -1,6 +1,22 @@
 # Structure bindings and tuple tricks
 
-## Structure Binding
+## Structure Bindings
+
+C++17 introduces the possibility to decompose tuple-like objects into references to their componenents:
+
+```cpp
+
+```
+
+A type is destructurable:
+
+* either all non-static data members: 
+   * must be public
+   * must be direct members of the type or members of the same public base class of the type
+   * Cannot be anonymous unions
+* or, it has: 
+   * an obj.get<>() method or an ADL-able get<>(obj) overload
+   * specializations of std::tuple_size<> and std::tuple_element<>
 
 ## `std::tie` trick
 
@@ -45,7 +61,7 @@ Using structure bindings on `UrlInfoTest.cpp`:
 
 It's a pity we cannot just `std::ignore` a field, isn't it?
 
-Implementing `operator<` in `MicroUrlInfo.h` by using `std::tie`:
+Here is how to implement `operator<` by leveraging `std::tie`:
 
 ```cpp
 inline auto AsTuple(const UrlInfo& info)
