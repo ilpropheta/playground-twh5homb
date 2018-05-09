@@ -2,7 +2,7 @@ title: A bit of post-modern C++ refactoring
 plan:
 - title: Welcome!
   statement: markdowns/welcome.md  
-- title: Getting rid of new and delete
+- title: Don't give your house keys to those pointers!
   statement: markdowns/exercise1.md
 - title: Use the Interfaces, Luke
   statement: markdowns/exercise2.md
