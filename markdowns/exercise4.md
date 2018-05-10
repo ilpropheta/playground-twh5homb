@@ -62,11 +62,19 @@ std::string MicroUrlService::ClickUrl(std::string_view microUrl)
 
 ```
 
-The idim to construct a `std::string` from `std::string_view` is simple:
+Remember the simple idiom to construct a `std::string` from `std::string_view`:
 
 ```cpp
 std::string_view strView = ...;
 std::string str {strView.data(), strView.size()};
+```
+
+It's very common to have such utility somewhere in our codebases:
+
+std::string to_string(std::string_view sv)
+{
+    return {sv.data(), sv.size()};
+}
 ```
 :::
 	
