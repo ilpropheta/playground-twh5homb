@@ -71,6 +71,7 @@ std::string str {strView.data(), strView.size()};
 
 It's very common to have such utility somewhere in our codebases:
 
+```cpp
 std::string to_string(std::string_view sv)
 {
     return {sv.data(), sv.size()};
