@@ -46,20 +46,7 @@ Work on `MicroUrlService` and replace `const char*` with `std::string_view` on i
 	 "microurl/src/ver5/tests/StringViewTest.cpp",
 	],
 	"command": "sh /project/target/run_test.sh ver5 [stringview]"})
-	
-## Bonus Track: avoid temporary strings	in map lookups
 
-IT is worried about that our service is getting too many requests per second and they decided to implement a very simple load balancing strategy to split the work. We know it cannot scale but we decide to help optimize it a bit, in the meantime some people of our team will develop a better strategy.
-
-The load balancing strategy is very naive. Basically, the job is sent to a certain instance of the service depending on the first letter of the url. Since IT people regularly attend [Coding Gym](http://coding-gym.org), they know this lookup can be implemented very easily with `std::map`. The only problem is that their function is accepting `std::string_view` and so a conversion to `std::string` is made every time a lookup is performed.
-
-Can you help them avoid such useless conversion? Accommodate `LoadBalancer` here below:
-
-@[Use a transparent comparator]({"stubs": [ 
-	 "microurl/src/ver5/tests/LoadBalancerTest.cpp",
-	],
-	"command": "sh /project/target/run_test.sh ver5 [lb]"})
-	
 ::: Do you really give up? :(
 
 Using `std::string_view` is as easy as using `std::string`. For example:
@@ -81,4 +68,90 @@ The idim to construct a `std::string` from `std::string_view` is simple:
 std::string_view strView = ...;
 std::string str {strView.data(), strView.size()};
 ```
+:::
+	
+## Bonus Track: avoid temporary strings	in map lookups
+
+IT is worried about that our service is getting too many requests per second and they decided to implement a very simple load balancing strategy to split the work. We know it cannot scale but we decide to help optimize it a bit, in the meantime some people of our team will develop a better strategy.
+
+The load balancing strategy is very naive. Basically, the job is sent to a certain instance of the service depending on the first letter of the url. Since IT people regularly attend [Coding Gym](http://coding-gym.org), they know this lookup can be implemented very easily with `std::map`. The only problem is that their function is accepting `std::string_view` and so a conversion to `std::string` is made every time a lookup is performed.
+
+Can you help them avoid such useless conversion? Accommodate `LoadBalancer` here below:
+
+@[Lookup map of strings by using string_view]({"stubs": [ 
+	 "microurl/src/ver5/tests/LoadBalancerTest.cpp",
+	],
+	"command": "sh /project/target/run_test.sh ver5 [lb]"})
+	
+::: Solution
+
+C++14 introduced **transparent comparators** to perform **heterogeneous lookup** on associative containers using keys that are not necessarily the same as the associative container key type.
+
+For example:
+
+```cpp
+struct Book
+{
+    string title;
+    string author;
+    int id;
+};
+
+struct BookComparator
+{
+    bool operator()(const Book &x, const Book &y) const
+    {
+        return x.title < y.title; // we just use title
+    }
+};
+
+set<Book> library = {...};
+
+library.find({"title", "", ""});
+```
+
+It would be better to pass only the title, wouldn't it?
+
+In C++14 we can turn `BookComparator` into a transparent comparator just by declaring a type `is_transparent`:
+
+```cpp
+struct BookComparator
+{
+    typedef void is_transparent;
+
+    bool operator()(const Book &x, const Book &y) const
+    {
+        return std::tie(x.title, x.author) < std::tie(y.title, y.author); // std::tie idiom
+    }
+
+    bool operator()(const Book &x, string_view title) const
+    {
+        return x.title < title;
+    }
+    
+    bool operator()(string_view title, const Book &y) const
+    {
+        return title < y.title;
+    }
+    
+    // other comparisons, as needed
+};
+
+library.find("title");
+```
+
+In the C++ library, `std::less<void>` or simply `std::less<>` (from C++14) is special: it is a specialization of `std::less` with parameter and return type deduced and it has `is_transparent` declared. This comparator automatically enables `operator<` comparisons among different types, when supported. 
+
+In the exercise above, `std::less<>` can be used to lookup an instance of `std::string_view` without incurring in creating a temporary `std::string`:
+
+
+
+```cpp
+less<>
+```
+
+Continue Reading:
+
+[`is_transparent`: How to search a C++ set with another type than its key](https://www.fluentcpp.com/2017/06/09/search-set-another-type-key/)
+
 :::
