@@ -8,7 +8,21 @@ An instance of the `string_view` class can be thought of as a "view" into an exi
 
 `string_view` has implicit conversion constructors from both `const char*` and `const string&`, and since `string_view` doesn’t copy, there is no O(n) memory penalty for making a hidden copy. In the case where a `const string&` is passed, the constructor runs in O(1) time. In the case where a `const char*` is passed, the constructor invokes a `strlen()` automatically (or you can use the two-parameter `string_view` constructor).
 
+`string_view`'s interface recalls `string`'s. For example:
 
+```cpp
+string_view sv = "this is a string view";
+sv = sv.substr(0, 4); // sv is "this"
+```
+
+The snippet above does not allocate data, instead it just returns a new string_view.
+
+Many operation can be performed just by narrowing the view on the original string. Here is how we can left-trim:
+
+```cpp
+string_view sv = "    trim me";
+sv.remove_prefix(std::min(sv.find_first_not_of(" "), sv.size())); // sv is "trim me"
+```
 
 Remember that `string_view` **is not necessarily NUL-terminated**.
 
