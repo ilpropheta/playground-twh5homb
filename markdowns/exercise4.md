@@ -2,13 +2,21 @@
 
 ## `std::string_view` in a nutshell
 
+`string_view` gives us the ability to refer to an existing string in a non-owning way.
+
 Remember to say:
 
 - null-termination is up to you (it's just a view)
 
+Continue reading:
+
+* [C++17 string_view](https://skebanga.github.io/string-view/)
+* [string_view odi et amo](https://marcoarena.wordpress.com/2017/01/03/string_view-odi-et-amo/)
+* [Tip of the Week #1: string_view](https://abseil.io/tips/1)
+
 ## Hands on!
 
-Our Chief Marketing Officer has just came back from CppCon where she attended a few talks about `std::string_view`. She is keen on selling to our investors that we are already using such new feature into our codebase.
+Our Chief Marketing Officer has just came back from *CppCon* where she attended a few talks about `std::string_view`. She is keen on selling to our investors that we are already using such new feature into our codebase.
 
 All things considered, this request is not so crazy. We have a few places where `std::string_view` could be really helpful...
 
@@ -23,11 +31,11 @@ Work on `MicroUrlService` and replace `const char*` with `std::string_view` on i
 	
 ## Bonus Track: avoid temporary strings	in map lookups
 
-IT is worried about our service getting to many requests per second and they decided to implement a very simple load balancing strategy to split the work among several instances of our service. We know it cannot scale but we decide to help optimize it a bit, in the meantime some people of our team will develop a better strategy.
+IT is worried about that our service is getting too many requests per second and they decided to implement a very simple load balancing strategy to split the work. We know it cannot scale but we decide to help optimize it a bit, in the meantime some people of our team will develop a better strategy.
 
-The load balancing strategy is very naive. Basically, the job is sent to a certain instance of the service depending on the first letter of the url. Since IT people regularly attend [Coding Gym](http://coding-gym.org), they know this lookup can be implemented very easily byt using a `std::map`. The only problem is that their function is accepting `std::string_view` and so a conversion to `std::string` is made every time.
+The load balancing strategy is very naive. Basically, the job is sent to a certain instance of the service depending on the first letter of the url. Since IT people regularly attend [Coding Gym](http://coding-gym.org), they know this lookup can be implemented very easily with `std::map`. The only problem is that their function is accepting `std::string_view` and so a conversion to `std::string` is made every time a lookup is performed.
 
-Can you help avoid such useless conversion? Accommodate `LoadBalancer` here below:
+Can you help them avoid such useless conversion? Accommodate `LoadBalancer` here below:
 
 @[Use a transparent comparator]({"stubs": [ 
 	 "microurl/src/ver5/tests/LoadBalancerTest.cpp",
