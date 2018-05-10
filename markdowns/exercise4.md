@@ -4,9 +4,13 @@
 
 `string_view` gives us the ability to refer to an existing string in a non-owning way.
 
-Remember to say:
+An instance of the `string_view` class can be thought of as a "view" into an existing character buffer. Specifically, a `string_view` consists of only a pointer and a length, identifying a section of character data that is not owned by the `string_view` and cannot be modified by the view. Consequently, making a copy of a `string_view` is a shallow operation: no string data is copied.
 
-- null-termination is up to you (it's just a view)
+`string_view` has implicit conversion constructors from both `const char*` and `const string&`, and since `string_view` doesn’t copy, there is no O(n) memory penalty for making a hidden copy. In the case where a `const string&` is passed, the constructor runs in O(1) time. In the case where a `const char*` is passed, the constructor invokes a `strlen()` automatically (or you can use the two-parameter `string_view` constructor).
+
+
+
+Remember that `string_view` **is not necessarily NUL-terminated**.
 
 Continue reading:
 
