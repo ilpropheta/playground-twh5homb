@@ -120,9 +120,9 @@ This very effective idiom could save time and make the code simpler. Try writing
 
 Let's get familiar with these post-modern C++ concepts.
 
-Your collegue Pete is obsessed with making tests clearer and more compact and you have decided to support his cause by applying structured bindings to a working test.
+Your collegue Pete is obsessed with making tests clearer and more compact, and you have decided to support his cause by applying structured bindings to a working test.
 
-Whule you were changing the code you received an important call. It's time to get back to the code! Finish your work by completing this test:
+You have a pending refactoring. It's time to get back and finish your work:
 
 @[Use structure bindings]({"stubs": [
 	 "microurl/src/ver4/tests/UrlInfoTest.cpp",
