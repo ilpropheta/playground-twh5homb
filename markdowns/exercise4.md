@@ -34,9 +34,9 @@ Continue reading:
 
 ## Hands on!
 
-Our Chief Marketing Officer has just came back from *CppCon* where she attended a few talks about `std::string_view`. She is keen on selling to our investors that we are already using such new feature into our codebase.
+Our Chief Marketing Officer has just came back from *CppCon* where she heard about `std::string_view` during a coffee break. She is keen on selling to our investors that we are already using such C++17 feature into our codebase.
 
-All things considered, this request is not so crazy. We have a few places where `std::string_view` could be really helpful...
+All things considered, this request is not so silly. We have a few places where `std::string_view` could be really a good fit.
 
 Work on `MicroUrlService` and replace `const char*` with `std::string_view` on its public functions. Decomment some lines in `StringViewTest.cpp` and make it work.
 
@@ -46,6 +46,14 @@ Work on `MicroUrlService` and replace `const char*` with `std::string_view` on i
 	 "microurl/src/ver5/tests/StringViewTest.cpp",
 	],
 	"command": "sh /project/target/run_test.sh ver5 [stringview]"})
+
+This exercise is just to let you familiarize with `std::string_view`, in general [this guideline](https://abseil.io/tips/1) is insightful:
+
+### Guideline
+
+If your API only needs to reference the string data during a single call, and doesn’t need to modify the data, accepting a `string_view` is sufficient. If you need to reference the data later or need to modify the data, you can explicitly convert to a C++ string object.
+
+Adding `string_view` into an existing codebase is not always the right answer: changing parameters to pass by `string_view` can be inefficient if those are then passed to a function requiring a string or a NUL-terminated `const char*`. It is best to adopt `string_view` starting at the utility code and working upward, or with complete consistency when starting a new project.
 
 ::: Do you really give up? :(
 
