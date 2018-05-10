@@ -2,7 +2,7 @@
 
 ## Welcome!
 
-Welcome to my first interactive workshop using this platform!
+Welcome to my first interactive workshop on [tech.io](https://tech.io)!
 
 This playground serves as an interactive environment to people attending this workshop at the Italian C++ Meetup in Modena on June 14.
 
