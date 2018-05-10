@@ -2,6 +2,8 @@
 
 ## Lambdas, lambdas everywhere
 
+![Lambdas, lambdas everywhere](lambdas.png)
+
 - parlare anche di std::function
 
 ## Hands on!
