@@ -20,11 +20,96 @@ vector<int> v = {10, 20, 30, 41, 50, 67};
 auto firstOdd = std::find(begin(v), end(v), [](int i) { return i%2 == 1; });
 ```
 
-This `[](int i) { return i%2 == 1; }` introduces a lambda expression.
+This expression `[](int i) { return i%2 == 1; }` generates a lambda.
 
 C++ lambdas come with some details to master. I'll show you the most important ones and leave the others to further readings.
 
 ### What's a lambda, in short
+
+Basically, a lambda will result in generating a **callable object** (or *functor*, in the C++ slang).
+
+For this lambda:
+
+```cpp
+[](int i) { return i%2 == 1; }
+```
+
+the compiler could generate something very close to:
+
+```cpp
+struct lambda12384950_t
+{
+    bool operator()(int i) const
+    {
+        return i%2 == 1;
+    }
+};
+```
+
+Such lambdas are **stateless** and they are automatically convertible to function pointers:
+
+```cpp
+using FunPtr = bool(*)(int);
+
+FunPtr ptr = [](int i) { return i%2 == 1; };
+```
+
+This kind of lambdas is comparable to creating static strings:
+
+```cpp
+int main()
+{
+    auto someString = "this is a string";
+    cout << someString;
+}
+```
+
+In this case:
+
+```cpp
+[](auto i) { return i%2 == 1; }
+```
+
+The call operator is templatized:
+
+```cpp
+struct lambda12384950_t
+{
+    template<typename T>
+    bool operator()(T i) const
+    {
+        return i%2 == 1;
+    }
+};
+```
+
+As you will learn in a moment, lambdas can *capture* variables in outer and global scopes, becoming **stateful**:
+
+```cpp
+vector<int> prices = {1,2,3};
+auto isInPrices = [v](int i) { return find(begin(v), end(v), i) != end(v); };
+```
+
+The lambda above may be turned into:
+
+```cpp
+struct lambda12384950_t
+{
+    lambda12384950_t(const vector<int>& field)
+        : _private_field_1(field)
+    {}
+
+    bool operator()(T i) const
+    {
+        return find(begin(_private_field_1), end(_private_field_1), i) != end(_private_field_1);
+    }
+    
+private:
+    vector<int> _private_field_1;
+};
+```
+
+Clearly, this kind of lambda cannot be converted to function pointers.
 
 ### Parameter list
 
