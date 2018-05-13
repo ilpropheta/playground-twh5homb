@@ -6,7 +6,7 @@ Welcome to my first interactive workshop on [tech.io](https://tech.io)!
 
 This playground serves as an interactive environment to people attending this workshop at the Italian C++ Meetup in Modena on June 14.
 
-I'll show you some "must know" features and idioms of **post**-modern C++. I like calling this era of C++ development **post-**modern because the term "modern" was introduced more than 17 years ago in [Alexandrescu's book](https://en.wikipedia.org/wiki/Modern_C%2B%2B_Design).
+I'll show you some "must know" features and idioms of **post**-modern C++. I like calling this era of C++ development **post-** modern because the term "modern" was introduced more than 17 years ago in [Alexandrescu's book](https://en.wikipedia.org/wiki/Modern_C%2B%2B_Design).
 
 Through these pages, you'll have the opportunity to put your hands on some code by refactoring a small existing codebase. The exercises are very simple and they are intended to let you play and go beyond the simple requests.
 
