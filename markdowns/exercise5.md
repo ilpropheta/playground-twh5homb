@@ -192,7 +192,7 @@ Such syntax is called **trailing return type**.
  auto lam = [](int i, int j) { return i+j; };
  ```
  
-This is the most efficient way to store lambdas. Similarly, we can pass lambdas by using templates:
+This is the most efficient way to store lambdas. Similarly, we can pass lambdas by using templates (this is the approach adopted by the standard library):
 
 ```cpp
 template<typename Callable>
@@ -220,8 +220,37 @@ Sometimes we have to commit to a non-generic type, for different reasons.
  
  `std::function`
  
- C++11 introduces a convenient wrapper for storing any kind of function (lambda function, functor, or function pointer)
+ C++11 introduces a convenient wrapper for storing any kind of function (lambda function, functor, or function pointer): `std::function`. 
+ It allows you to specify the exact types for the argument list and the return value in the template:
+ 
+ ```cpp
+ std::function<int(int, int)> lam = [](int i, int j) { return i+j; };
+ ```
 
+This is a great way of passing around lambdas both as parameters and as return values.
+
+```cpp
+void MyAlgo(std::function<int(int, int)> lam);
+```
+
+`std::function` is able to store any kin of function, including stateful callables:
+
+ ```cpp
+ vector<int> values = {1,2,3};
+ std::function<int(int)> lam = [&](int i) { return v[i]; };
+ ```
+
+**Note**: a default-constructed `std::function` is like a null object:
+
+```cpp
+ std::function<void(int)> f;
+ if (!f)
+ {
+    cout << "empty";
+ }
+ ```
+
+The snippet above will print the `empty`.
 
 Continue Reading:
 
@@ -231,6 +260,8 @@ Continue Reading:
 * Arne Mertz: [Part 1](https://arne-mertz.de/2015/10/new-c-features-lambdas/) and [Part 2](https://arne-mertz.de/2015/11/lambdas-part-2-capture-lists-and-stateful-closures/)
 
 ## Hands on!
+
+Tom is a functional programming hero at **Gugol** 
 
 @[Implement a visit function in our service]({"stubs": [ 
 	 "microurl/src/ver6/MicroUrlService.h",
