@@ -34,7 +34,7 @@ Continue reading:
 
 ## Hands on!
 
-Our Chief Marketing Officer has just came back from *CppCon* where she heard about `std::string_view` during a coffee break. She is keen on selling to our investors that we are already using such C++17 feature into our codebase.
+Jane, our Chief Marketing Officer, has just came back from *CppCon* where she heard about `std::string_view` during a coffee break. She is keen on selling to our investors that we are already using such C++17 feature into our codebase.
 
 All things considered, this request is not so silly. We have a few places where `std::string_view` could be really a good fit.
 
