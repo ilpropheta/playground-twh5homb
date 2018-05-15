@@ -1,5 +1,16 @@
 # Invalid urls
 
+Mark from our IT Security Department is worried because our service does not complain if an invalid url is passed to `ClickUrl`. You need to handle errors, somehow.
+
+In C++ there are so many ways to manage errors that it's very hard to state which is better. As always, each comes with tradeoffs, pros and cons. Traditional ways are:
+
+* exceptions
+* error codes
+* bool flags
+* error listeners/receivers (similar to visitors)
+
+C++17 comes with another way to handle such 
+
 ## `optional<T>`
 
 - alternative: codici errore, bool, eccezioni, visitor-style
