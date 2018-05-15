@@ -315,8 +315,6 @@ A simple idiom to pass stateful visitors by value is using `std::ref`, which cre
 ```cpp
 service.VisitMicroUrls(std::ref(visitor));
 ```
-:::
-
 `std::ref` creates a `std::reference_wrapper`, which provides a call operator (`operator()`) proxying to the wrapped object.
 
 This approach is very useful to invoke functions taking generic callables by value and we want to pass them by reference. To give you an example, pretty much every function of the STL takes such objects by value:
@@ -327,3 +325,5 @@ thread t1 { std::ref(fun) }; // not copied (be careful with the scope...)
 ```
 
 Another usage of such idiom, probably less common, is to [pass polymorphic objects to an STL algorithm](https://www.fluentcpp.com/2018/04/17/pass-polymorphic-object-stl-algorithm/).
+
+:::
