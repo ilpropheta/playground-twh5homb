@@ -267,7 +267,6 @@ Some benefits of internal iteration:
 
 * declarative style ("what" opposed to "what" and "how")
 * internal details are hidden (we can change them afterwards with no impact on the client)
-* *scope-friendly*
 
 Your boss decides to embrace this latter option to give a little functional touch to the service. Your task consists in implementing such visit function which invokes a callable object for each stored urls:
 
