@@ -263,6 +263,12 @@ Continue Reading:
 
 An open question is dividing the company: **how to access all the available urls?** A group of devs sustains we should just have a `GetUrls` function returning a `vector` with url information; on the other hand, another faction supports a different idea: we should make our service *visitable* by adding support for **internal iteration**. That is, instead of controlling the iteration (e.g. by iterating on the resulting data structure), the client just provides the code which must be executed for all/some of data elements. We take (the service) care of how the elements are accessed.
 
+Some benefits of internal iteration:
+
+* declarative style ("what" opposed to "what" and "how")
+* internal details are hidden (we can change them afterwards with no impact on the client)
+* *scope-friendly*
+
 Your boss decides to embrace this latter option to give a little functional touch to the service. Your task consists in implementing such visit function which invokes a callable object for each stored urls:
 
 @[Implement a visit function in our service]({"stubs": [ 
