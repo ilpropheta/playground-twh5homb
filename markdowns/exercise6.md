@@ -1,6 +1,16 @@
 # Invalid urls
 
-Mark from our IT Security Department is worried because our service does not complain if an invalid url is passed to `ClickUrl`. You need to handle errors, somehow.
+Currently, `ClickUrl` does not complain when receiving invalid urls. We can assume it has a precondition: only well-formed urls are admitted. That is, we can assume it will be called only when the input has this form:
+
+```
+https://micro.url/SECRET
+```
+
+Suppose dispatching is done at a higher level and `ClickUrl` is only called when the url has this form.
+
+What about `SECRET`? Only `MicroUrlService` is able to validate such information and then proxy to the final expanded url.
+
+At the moment, `ClickUrl` does not complain if `SECRET` is invalid.
 
 In C++ there are so many ways to manage errors that it's very hard to state which is better. As always, each comes with tradeoffs, pros and cons. Traditional ways are:
 
@@ -17,14 +27,17 @@ C++17 comes with another way to handle such
 
 ## Hands on!
 
-@[Use `optional` to handle invalid urls]({"stubs": [ 
+Mark from our IT Security Department is worried about `ClickUrl` flaw and he has formally asked you to fix it.
+
+Your team has decided to handle possible failures by using `optional`. Complete the code and make the test pass:
+
+@[Handling invalid urls with optional]({"stubs": [ 
 	 "microurl/src/ver7/MicroUrlService.h",
 	 "microurl/src/ver7/MicroUrlService.cpp",
 	 "microurl/src/ver7/tests/UrlInfoTest.cpp",
 	],
 	"command": "sh /project/target/run_test.sh ver7 [optional]"})
 
-	
 ## Bonus: chaining `optional`
 
 ## Bonus: `std::invoke` finesse
