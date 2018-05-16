@@ -1,33 +1,36 @@
 # Invalid urls
 
-Currently, `ClickUrl` does not complain when receiving invalid urls. We can assume it has a precondition: only well-formed urls are admitted. That is, we can assume it will be called only when the input has this form:
+Currently, `ClickUrl` and `Stats` do not complain when receiving invalid urls. We can assume they have a precondition: only well-formed urls are admitted. That is, we can assume the input has always this form:
 
 ```
 https://micro.url/SECRET
 ```
 
-Suppose dispatching is done at a higher level and `ClickUrl` is only called when the url has this form.
+Suppose dispatching is done at a higher level and `ClickUrl` and `Stats` are only called when the url has this form.
 
 What about `SECRET`? Only `MicroUrlService` is able to validate such information and then proxy to the final expanded url.
 
-At the moment, `ClickUrl` does not complain if `SECRET` is invalid.
+At the moment, `ClickUrl` and `Stats` do not complain if `SECRET` is invalid.
 
-In C++ there are so many ways to manage errors that it's very hard to state which is better. As always, each comes with tradeoffs, pros and cons. Traditional ways are:
+In C++ there are so many ways to manage errors that it's very hard to state which is better. As always, each comes with tradeoffs, pros and cons. Traditional ways include:
 
 * exceptions
 * error codes
 * bool flags
 * error listeners/receivers (similar to visitors)
 
-C++17 comes with another way to handle such 
+What else?
 
 ## `optional<T>`
 
-- alternative: codici errore, bool, eccezioni, visitor-style
+After many years in the C++ ecosystem (e.g. boost) and in other paradigms/languages, C++ has welcomed `std::optional`, a value that may or may not be present. In other words, `optional` is like a "typed" box: it either contain or not contain a value `T`. We can ask the box if it contains an instance of `T` and, if so, we can retrieve it.
+
+If an `optional<T>` contains a value, the value is **guaranteed to be allocated as part of the optional object footprint** (no dynamic memory allocation ever takes place).
+
 
 ## Hands on!
 
-Mark from our IT Security Department is worried about `ClickUrl` flaw and he has formally asked you to fix it.
+Mark from our IT Security Department is worried about such flaws and he has formally asked you to fix.
 
 Your team has decided to handle possible failures by using `optional`. Complete the code and make the test pass:
 
