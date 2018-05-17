@@ -21,15 +21,15 @@ In C++ there are too many ways to manage errors that it's very hard to state whi
 * bool flags
 * error listeners/receivers (similar to visitors)
 
-What else?
+Instead of analysing all the options above, I'd like to introduce you another way to handle failures you should know about.
 
 ## `optional<T>`
 
-After many years in the C++ ecosystem (e.g. boost) and in other paradigms/languages, C++ has welcomed `std::optional`, a value that may or may not be present. In other words, `optional` is like a "typed" box: it either contain or not contain a value `T`. We can ask the box if it contains an instance of `T` and, if so, we can retrieve it.
+Being a hit for many years (in C++ - e.g. boost - and in other languages/paradigms), C++ has recently (C++17) welcomed `std::optional`, a value that may or may not be present. In other words, `optional` is like a "typed" box: it either contain or not contain a value `T`. We can ask the box if it contains an instance of `T` and, if so, we can retrieve it.
 
 If an `optional<T>` contains a value, the value is **guaranteed to be allocated as part of the optional object footprint** (no dynamic memory allocation ever takes place).
 
-`optional<T>` is a common construct in other languages (e.g. C# has `T?`, Haskell has `Maybe`, etc) so it's worth knowing it.
+`optional<T>` is a common construct in other languages (e.g. C# has `T?`, Haskell has `Maybe`, etc) so it's worth knowing it. Optional types come from functional programming and are *monads* (e.g. chainable).
 
 A common use case for `optional` is the return value of a function that may fail. As opposed to other approaches, such as `std::pair<T,bool>`, `optional` handles expensive-to-construct objects well and is more readable, as the intent is expressed explicitly.
 
@@ -37,7 +37,42 @@ Another use case for `optional` is the *lazy construction* of objects. Other app
 
 ### Examples
 
+Classical example:
 
+```cpp
+std::optional<int> try_parse_int(const std::string& s)
+{
+    //try to parse an int from the given string,
+    //and return "nothing" if you fail
+}
+```
+
+Optional arguments:
+
+```cpp
+std::vector<std::pair<std::string, double>> search(
+    std::string query,
+    std::optional<int> max_count,
+    std::optional<double> min_match_score);
+```
+
+### Optional references
+
+Does it `optional<T&>` make sense? It might, but it's not allowed in C++17.
+
+Suppose we want to look up an entry into a certain data store:
+
+```cpp
+? find(const Key& key);
+```
+
+A good choice could be returning `std::optional<Value&>` to avoid copying `Value`, instead of using pointers (our intent would be much clearer). A commond workaround consists in using `reference_wrapper` we met some time ago:
+
+```cpp
+optional<reference_wrapper<Value>> find(const Key& key);
+// or
+optional<reference_wrapper<const Value>> find(const Key& key);
+```
 
 Continue Reading:
 
@@ -62,7 +97,7 @@ Your team has decided to handle possible failures by using `optional`. Complete 
 
 ## Bonus: `std::invoke` finesse
 	
-An intern got excited about chaining `optional`, however she would love simplifying the code above this way:
+An intern got excited about chaining, however she would love simplifying the code above this way:
 	
 ```cpp	
 std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
