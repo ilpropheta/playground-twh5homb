@@ -82,9 +82,9 @@ Continue Reading:
 
 ## Hands on!
 
-Mark from our IT Security Department is worried about such flaws and he has formally asked you to fix.
+Mark, head of IT Security Department at **Gugol**, asked your team to make `ClickUrl` and `Stats` more defensive by handling unknown SECRETs.
 
-Your team has decided to handle possible failures by using `optional`. Complete the code and make the test pass:
+Your team has discussed a bit and decided to handle failures with `optional`. The signatures have been already acommodated, complete the bodies and make the test pass:
 
 @[Handling invalid urls with optional]({"stubs": [ 
 	 "microurl/src/ver7/MicroUrlService.h",
@@ -93,7 +93,11 @@ Your team has decided to handle possible failures by using `optional`. Complete 
 	],
 	"command": "sh /project/target/run_test.sh ver7 [optional]"})
 
-## Bonus: chaining `optional`
+## Bonus: `optional` chain
+
+`optional` becomes much more powerful when it is used in **composition**, as its characteristics allow for pipelines to be created which don't need to explicitly handle errors at each step.
+
+
 
 ## Bonus: `std::invoke` finesse
 	
