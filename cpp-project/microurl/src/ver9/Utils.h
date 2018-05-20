@@ -1,18 +1,26 @@
 #pragma once
 #include <string>
 #include <optional>
+#include <functional>
 #include "MicroUrlInfo.h"
 
 long UrlToId(std::string_view microUrl);
-std::optional<UrlInfo> NotExpired(const UrlInfo& url);
 
-template<typename MapType, typename GoodAction>
-std::optional<UrlInfo> TryLookup(MapType& idToUrl, std::string_view microUrl, GoodAction action)
+std::optional<UrlInfo> WhenNotExpired(const UrlInfo& url);
+
+UrlInfo VisitUrl(UrlInfo& url);
+
+template<typename IdToUrlMap>
+auto TryLookup(IdToUrlMap& m, std::string_view str)
 {
-	if (auto it = idToUrl.find(UrlToId(microUrl)); it != end(idToUrl))
+	constexpr bool MapIsConst = std::is_const_v<std::remove_reference_t<decltype(m)>>;
+	using UrlInfoType = std::conditional_t<MapIsConst, const UrlInfo, UrlInfo>;
+	using OptionalType = std::optional<std::reference_wrapper<UrlInfoType>>;
+
+	auto id = UrlToId(str);
+	if (auto it = m.find(id); it != end(m))
 	{
-		action(it->second);
-		return it->second;
+		return OptionalType{ it->second };
 	}
-	return std::nullopt;
+	return OptionalType{ std::nullopt };
 }

@@ -22,28 +22,33 @@ long UrlToId(string_view microUrl)
 	return Ext::Shortener::shortURLtoID(secret.data());
 }
 
-template<typename MapType, typename GoodAction>
-std::optional<UrlInfo> TryLookup(MapType& idToUrl, string_view microUrl, GoodAction action)
+template<typename IdToUrlMap>
+auto TryLookup(IdToUrlMap& m, string_view str)
 {
-	if (auto it = idToUrl.find(UrlToId(microUrl)); it != end(idToUrl))
+	constexpr bool MapIsConst = std::is_const_v<std::remove_reference_t<decltype(m)>>;
+	using UrlInfoType = std::conditional_t<MapIsConst, const UrlInfo, UrlInfo>;
+	using OptionalType = std::optional<std::reference_wrapper<UrlInfoType>>;
+	
+	auto id = UrlToId(str);
+	if (auto it = m.find(id); it != end(m))
 	{
-		action(it->second);
-		return it->second;
+		return OptionalType{ it->second };
 	}
-	return nullopt;
+	return OptionalType{ nullopt };
 }
 // }
 
 std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
 {
 	return 
-		TryLookup(m_idToUrl, microUrl, [](auto& url) { url.Clicks++; })
+		TryLookup(m_idToUrl, microUrl)
+		|| [](auto& url) { url.Clicks++; return url; }
 		|| &UrlInfo::OriginalUrl;
 }
 
 std::optional<UrlInfo> MicroUrlService::Stats(std::string_view microUrl) const
 {
-	return TryLookup(m_idToUrl, microUrl, [](auto&) {});
+	return TryLookup(m_idToUrl, microUrl);
 }
 
 std::string MicroUrlService::MakeMicroUrl(std::string_view url, std::chrono::duration<int> urlDuration)

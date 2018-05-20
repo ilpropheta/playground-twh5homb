@@ -22,3 +22,9 @@ auto operator||(std::optional<T> opt, F f)
 {
 	return opt ? wrap(std::invoke(f, opt.value())) : std::nullopt;
 }
+
+template<typename T, typename F>
+auto operator||(std::optional<std::reference_wrapper<T>> optRef, F f)
+{
+	return optRef ? wrap(std::invoke(f, optRef->get())) : std::nullopt;
+}

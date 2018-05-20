@@ -20,15 +20,16 @@ MicroUrlService::~MicroUrlService() = default;
 
 std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
 {
-	return 
-		TryLookup(m_idToUrl, microUrl, [](auto& url) { url.Clicks++; })
-		|| NotExpired
+	return
+		TryLookup(m_idToUrl, microUrl)
+		|| WhenNotExpired
+		|| VisitUrl
 		|| &UrlInfo::OriginalUrl;
 }
 
 std::optional<UrlInfo> MicroUrlService::Stats(std::string_view microUrl) const
 {
-	return TryLookup(m_idToUrl, microUrl, [](auto&) {});
+	return TryLookup(m_idToUrl, microUrl);
 }
 
 std::string MicroUrlService::MakeMicroUrl(std::string_view url, std::chrono::duration<int> urlDuration)

@@ -7,9 +7,15 @@ long UrlToId(std::string_view microUrl)
 	return Ext::Shortener::shortURLtoID(secret.data());
 }
 
-std::optional<UrlInfo> NotExpired(const UrlInfo& url)
+std::optional<UrlInfo> WhenNotExpired(const UrlInfo& url)
 {
 	if (IsExpired(url))
 		return url;
 	return std::nullopt;
+}
+
+UrlInfo VisitUrl(UrlInfo& url)
+{
+	url.Clicks++;
+	return url;
 }

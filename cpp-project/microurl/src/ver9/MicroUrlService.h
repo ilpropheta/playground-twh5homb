@@ -48,12 +48,14 @@ template<typename OnClick>
 void MicroUrlService::ClickUrl(std::string_view microUrl, OnClick onClick)
 {
 	std::variant<UrlInfo, ExpiredUrl, BadUrl> status = BadUrl{};
-	if (auto opt = TryLookup(m_idToUrl, microUrl, [](auto& url) { url.Clicks++; }); opt)
+	if (auto opt = TryLookup(m_idToUrl, microUrl); opt)
 	{
-		if (auto ne = NotExpired(*opt); ne)
+		auto& urlRef = opt->get();
+		urlRef.Clicks++;
+		if (auto ne = WhenNotExpired(*opt); ne)
 			status = *ne;
 		else
-			status = ExpiredUrl{ std::chrono::system_clock::now() - opt->Expiration };
+			status = ExpiredUrl{ std::chrono::system_clock::now() - urlRef.Expiration };
 	}
 	std::visit(onClick, status);
 }
