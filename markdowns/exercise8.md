@@ -2,6 +2,7 @@
 
 ## `variant<T>`
 
+- mostrare esempio morra cinese
 
 ## Hands on!
 
