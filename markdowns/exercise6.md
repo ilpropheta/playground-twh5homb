@@ -159,7 +159,7 @@ Add chaining to your code above and adapt your functions.
 
 ## Bonus: syntactic sugar
 	
-An intern got excited about chaining and she is wondering if one can simply use a class member function in any stage of the pipeline:
+An intern got excited about such monadic nature of `optional` but she would love passing member variables and functions, like in this snippet:
 	
 ```cpp	
 return 
@@ -168,7 +168,7 @@ return
 }
 ```
 
-Can you slightly change `operator||` to accommodate such request?
+Can you impress her by accommodating such request?
 
 ::: Do you really give up? :(
 
@@ -181,4 +181,6 @@ auto operator||(std::optional<T> opt, F f)
 	return opt ? wrap(std::invoke(f, opt.value())) : std::nullopt;
 }
 ```
+
+`std::invoke` is a little gem from C++17 enabling generic invocation of callables. It works smoothly with member variables and functions too.
 :::
