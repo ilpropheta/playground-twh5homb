@@ -1,4 +1,4 @@
-# Invalid urls
+# Handling invalid secrets
 
 Currently, `ClickUrl` and `Stats` do not complain when receiving invalid urls. We can assume they have a precondition: only well-formed urls are admitted. That is, we can assume the input has always this form:
 
