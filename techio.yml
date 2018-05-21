@@ -12,9 +12,9 @@ plan:
   statement: markdowns/exercise4.md
 - title: A functional touch
   statement: markdowns/exercise5.md
-- title: Invalid urls
+- title: Handling invalid secrets
   statement: markdowns/exercise6.md
-- title: Urls expiration
+- title: Making urls expire
   statement: markdowns/exercise7.md
 - title: Handling different url access status
   statement: markdowns/exercise8.md
