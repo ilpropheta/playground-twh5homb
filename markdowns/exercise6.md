@@ -97,18 +97,74 @@ Your team has discussed a bit and decided to handle failures with `optional`. Th
 
 `optional` becomes much more powerful when it is used in **composition**, as its characteristics allow for pipelines to be created which don't need to explicitly handle errors at each step.
 
+The simplest way to chain `optional` is defining an operator like:
 
+```cpp
+template<typename T, typename F>
+auto operator||(std::optional<T> opt, F f)
+{
+	return opt ? f(opt.value()) : std::nullopt;
+}
+```
+
+This enables chaining:
+
+```cpp
+auto value = 
+    (Parse(formula)
+    || Compile
+    || Optimize
+    || Evaluate).value_or(NAN);
+```
+
+Each stage of the pipeline is executed only if the previous has returned a good value (not `nullopt`) and has to return an instance of `optional`. The latter can be inconvenient:
+
+```cpp
+    return 
+        Parse // return optional<string>
+        || [](const string& s) { return s.substr(0, 3); } // suppose cannot fail
+```
+
+Instead, we have to write:
+
+```cpp
+    return 
+        Parse
+        || [](const string& s) { return optional<string>{s.substr(0, 3)}; } 
+```
+
+It's possible to tweak a bit `operator||` to make the first snippet work:
+
+```cpp
+template<typename T>
+auto wrap(std::optional<T> opt)
+{
+	return opt;
+}
+
+template<typename T>
+auto wrap(T value)
+{
+	return std::optional<T>(value);
+}
+
+template<typename T, typename F>
+auto operator||(std::optional<T> opt, F f)
+{
+	return opt ? wrap(f, opt.value()) : std::nullopt;
+}
+```
+
+Add chaining to your code above and adapt your functions.
 
 ## Bonus: `std::invoke` finesse
 	
-An intern got excited about chaining, however she would love simplifying the code above this way:
+An intern got excited about chaining and she is wondering if one can simply use a class member function in any stage of the pipeline:
 	
 ```cpp	
-std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
-{
-	return 
-		TryLookup(m_idToUrl, microUrl, [](auto& url) { url.Clicks++; })
-		|| &UrlInfo::OriginalUrl; // <-- instead of lambda
+return 
+	MakeUrlInfo // might return UrlInfo
+	|| &UrlInfo::OriginalUrl; // <-- instead of [](const UrlInfo& url) { return url.OriginalUrl; };
 }
 ```
 
