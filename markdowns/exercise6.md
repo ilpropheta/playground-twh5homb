@@ -157,7 +157,7 @@ auto operator||(std::optional<T> opt, F f)
 
 Add chaining to your code above and adapt your functions.
 
-## Bonus: `std::invoke` finesse
+## Bonus: syntactic sugar
 	
 An intern got excited about chaining and she is wondering if one can simply use a class member function in any stage of the pipeline:
 	
