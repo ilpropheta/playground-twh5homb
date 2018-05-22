@@ -218,7 +218,7 @@ Sometimes we have to commit to a non-generic type, for different reasons.
  
  What about stateful lambdas?
  
- `std::function`
+ **Functional polymorphic wrapper:** `std::function`
  
  C++11 introduces a convenient wrapper for storing any kind of function (lambda function, functor, or function pointer): `std::function`. 
  It allows you to specify the exact types for the argument list and the return value in the template:
