@@ -1,6 +1,6 @@
 # A functional touch
 
-Post-modern C++ programmers master more than one paradigm and, without a doubt, **functional paradigm** is one.
+Post-modern C++ programmers master more than one paradigm and, without a doubt, **functional paradigm** is one to know.
 
 We cannot really cover functional programming in C++, it would need more than a workshop! However, we could introduce a few interesting concepts and try them out.
 
