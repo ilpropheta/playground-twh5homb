@@ -132,7 +132,7 @@ public:
 
 This does not compile.
 
-Use `override` as much as possible (refactoring tools will use it automatically).
+Use `override` as much as possible (many refactoring tools will automatically do).
 
 ## Hands on!
 
