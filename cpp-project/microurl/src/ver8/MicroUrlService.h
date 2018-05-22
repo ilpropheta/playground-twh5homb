@@ -8,6 +8,7 @@
 #include <optional>
 
 class IIdGenerator;
+// }
 
 class MicroUrlService
 {
@@ -15,9 +16,10 @@ public:
 	MicroUrlService();
 	MicroUrlService(std::unique_ptr<IIdGenerator>);
 	~MicroUrlService();
-// }
+	
+	// 								    new ----v
 	std::string MakeMicroUrl(std::string_view url, std::chrono::duration<int> urlDuration = std::chrono::hours(24)*365);
-// { autofold
+	
 	std::optional<std::string> ClickUrl(std::string_view microUrl);
 	std::optional<UrlInfo> Stats(std::string_view microUrl) const;
 
@@ -34,4 +36,3 @@ void MicroUrlService::VisitMicroUrls(Action action) const
 	for (auto& p : m_idToUrl) // not using structure bindings
 		action(p.second);     // to avoid 'unused variable' warning
 }
-// }
