@@ -166,8 +166,7 @@ In the exercise above, `std::less<>` can be used to lookup an instance of `std::
     
 std::string_view MicroUrlServiceIpFor(std::string_view s)
 {
-	//								 v-- can we avoid this? Sure!
-	auto it = PrefixToIp.lower_bound(s);
+	auto it = PrefixToIp.lower_bound(s); // now takes string_view directly
 	return std::prev(it)->second;
 }
 private:
