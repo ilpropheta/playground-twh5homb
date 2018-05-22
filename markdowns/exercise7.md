@@ -78,6 +78,7 @@ Feature requests:
 You will find a few code changes a developer on the team did to start implementing such a request. Since you are the project leader, you may just ignore them and go your way.
 
 @[Give urls an expiration date]({"stubs": [ 
+	 "microurl/src/ver8/MicroUrlInfo.h",
 	 "microurl/src/ver8/MicroUrlService.h",
 	 "microurl/src/ver8/MicroUrlService.cpp",
 	 "microurl/src/ver8/tests/UrlInfoTest.cpp",
