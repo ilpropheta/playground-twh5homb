@@ -36,6 +36,11 @@ auto TryLookup(IdToUrlMap& m, string_view str)
 	}
 	return OptionalType{ nullopt };
 }
+
+std::optional<UrlInfo> MicroUrlService::Stats(std::string_view microUrl) const
+{
+	return TryLookup(m_idToUrl, microUrl);
+}
 // }
 
 std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
@@ -44,11 +49,6 @@ std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
 		TryLookup(m_idToUrl, microUrl)
 		|| [](auto& url) { url.Clicks++; return url; }
 		|| &UrlInfo::OriginalUrl;
-}
-
-std::optional<UrlInfo> MicroUrlService::Stats(std::string_view microUrl) const
-{
-	return TryLookup(m_idToUrl, microUrl);
 }
 
 std::string MicroUrlService::MakeMicroUrl(std::string_view url, std::chrono::duration<int> urlDuration)
