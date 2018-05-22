@@ -162,17 +162,17 @@ In the C++ library, `std::less<void>` or simply `std::less<>` (from C++14) is sp
 In the exercise above, `std::less<>` can be used to lookup an instance of `std::string_view` without incurring in creating a temporary `std::string`:
 
 ```cpp
-    //...
+//...
     
-	std::string_view MicroUrlServiceIpFor(std::string_view s)
-	{
-		//								 v-- can we avoid this? Sure!
-		auto it = PrefixToIp.lower_bound(s);
-		return std::prev(it)->second;
-	}
+std::string_view MicroUrlServiceIpFor(std::string_view s)
+{
+	//								 v-- can we avoid this? Sure!
+	auto it = PrefixToIp.lower_bound(s);
+	return std::prev(it)->second;
+}
 private:
-                            // look here ---v
-	std::map<std::string, std::string, std::less<>> PrefixToIp;
+                           // look here ---v
+std::map<std::string, std::string, std::less<>> PrefixToIp;
 ```
 
 Continue Reading:
