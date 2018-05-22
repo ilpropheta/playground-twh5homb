@@ -89,7 +89,7 @@ std::string to_string(std::string_view sv)
 	
 ## Bonus Track: avoid temporary strings	in map lookups
 
-IT is worried about that our service is getting too many requests per second and they decided to implement a very simple load balancing strategy to split the work. We know it cannot scale but we decide to help optimize it a bit, in the meantime some people of our team will develop a better strategy.
+IT is worried that our service accepts too many requests per second and they decided to implement a very simple load balancing strategy to split the work among several service instances. We know it cannot scale but we decide to help optimize it a bit, in the meantime some people of our team will develop a better strategy.
 
 The load balancing strategy is very naive. Basically, the job is sent to a certain instance of the service depending on the first letter of the url. Since IT people regularly attend [Coding Gym](http://coding-gym.org), they know this lookup can be implemented very easily with `std::map`. The only problem is that their function is accepting `std::string_view` and so a conversion to `std::string` is made every time a lookup is performed.
 
