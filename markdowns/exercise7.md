@@ -75,7 +75,7 @@ Feature requests:
 * the failing test should become green
 * add an extra test, if possible
  
-You will find a few code changes a developer on the team did to start implementing such a request. Since you are the project leader, you may just ignore them and go your way.
+A developer on your team did some changes on the code already, however since you are the project leader, you are not required to keep them in.
 
 @[Give urls an expiration date]({"stubs": [ 
 	 "microurl/src/ver8/MicroUrlInfo.h",
