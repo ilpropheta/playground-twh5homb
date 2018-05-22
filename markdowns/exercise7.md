@@ -65,11 +65,22 @@ Congratulations! Your boss was so impressed with your recent achievements that h
 
 Great power comes with great responsibility, though.
 
-You are requested to implement a new feature that our CEO is propagating as the feature of the year: URLs could expire after a certain number of hours (1 year, by default ).
+You are requested to implement a new feature that our CEO is propagating as the feature of the year: URLs could expire after a certain amount of time (1 year, by default ).
 
-@[`optional` can handle expired urls as well]({"stubs": [ 
+Feature requests:
+
+* `MicroUrlService::MakeMicroUrl` must take an url duration
+  * such a requirement is not clear here: it could be a specific quantity (e.g. hours) or not. Up to you, balance compromises
+* clicking an expired url should be forbidden
+* the failing test should become green
+* add an extra test, if possible
+ 
+You will find a few code changes a developer on the team did to start implementing such a request. Since you are the project leader, you may just ignore them and go your way.
+
+@[Give urls an expiration date]({"stubs": [ 
 	 "microurl/src/ver8/MicroUrlService.h",
 	 "microurl/src/ver8/MicroUrlService.cpp",
 	 "microurl/src/ver8/tests/UrlInfoTest.cpp",
 	],
 	"command": "sh /project/target/run_test.sh ver8"})
+	
