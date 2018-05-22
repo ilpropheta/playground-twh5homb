@@ -1,21 +1,19 @@
 # Don't give your house keys to those pointers!
 
-Pointers are cheap but at the same time very unclear. We cannot easily figure out what a pointer really is for any pieces of code:
+Pointers are cheap but at the same time very unclear. Could you unmistakably figure out what `p` is here?
 
 ```cpp
 void Func(int* p)
 ```
 
-What does `p` mean?
-
-* should `Func` delete it?
-* can it be null?
-* single instance or array?
-* out parameter?
+* should `Func` delete `p`?
+* can `p` be null?
+* is `p` referring to a single instance or an array?
+* is `p` an out parameter?
  
-Among the problems above, the most dangerous one is very likely on **ownership**. Pointers should never own resources, at least in business code (can be different in libraries or low-level code).
+Among the others, **ownership** is a huge problem. Pointers should never own resources, at least in business code (can be different in libraries or low-level code).
 
-Let's see what alternative we have in C++.
+Let's see alternative solutions we have in C++.
 
 ## Getting a glimpse of smart pointers
 
