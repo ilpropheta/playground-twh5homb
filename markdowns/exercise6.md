@@ -25,7 +25,7 @@ Instead of analysing all the options above, I'd like to introduce you another wa
 
 ## `optional<T>`
 
-Being a hit for many years (in C++ - e.g. boost - and in other languages/paradigms), C++ has recently (C++17) welcomed `std::optional`, a value that may or may not be present. In other words, `optional` is like a "typed" box: it either contain or not contain a value `T`. We can ask the box if it contains an instance of `T` and, if so, we can retrieve it.
+Being a hit for many years (in C++ - e.g. boost - and in other languages/paradigms), C++ has recently (C++17) welcomed on bord `std::optional`, a value that may or may not be present. In other words, `optional` is like a "typed" box: it either contains or not contain a value `T`. We can ask the box if it contains an instance of `T` and, if so, we can retrieve it.
 
 If an `optional<T>` contains a value, the value is **guaranteed to be allocated as part of the optional object footprint** (no dynamic memory allocation ever takes place).
 
