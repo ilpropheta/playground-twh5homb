@@ -84,4 +84,43 @@ A developer on your team did some changes on the code already, however since you
 	 "microurl/src/ver8/tests/UrlInfoTest.cpp",
 	],
 	"command": "sh /project/target/run_test.sh ver8"})
-	
+
+::: Do you really give up? :(
+
+A possible solution:
+
+```cpp
+std::string MicroUrlService::MakeMicroUrl(std::string_view url, std::chrono::duration<int> urlDuration)
+{
+	auto id = m_idGenerator->Generate(url.data());
+	auto secret = Ext::Shortener::idToShortURL(id);
+	auto microUrl = string("https://micro.url/") + secret;
+	auto now = chrono::system_clock::now();
+	m_idToUrl[id] = { {url.data(), url.size()}, microUrl, 0, now, now + urlDuration };
+	return microUrl;
+}
+
+bool IsExpired(const UrlInfo& url)
+{
+	return (url.Expiration > std::chrono::system_clock::now());
+}
+
+std::optional<std::reference_wrapper<UrlInfo>> GoodIfNotExpired(UrlInfo& url)
+{
+	if (IsExpired(url))
+		return std::nullopt;
+	return url;
+}
+
+std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
+{
+	return 
+		TryLookup(m_idToUrl, microUrl)
+		|| GoodIfNotExpired
+		|| [](auto& url) { url.Clicks++; return url; }
+		|| &UrlInfo::OriginalUrl;
+}
+```
+
+It's worth noticing how simple was to add url expiration to the current optional chain.
+:::
