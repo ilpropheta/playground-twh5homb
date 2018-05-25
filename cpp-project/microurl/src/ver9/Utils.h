@@ -6,9 +6,7 @@
 
 long UrlToId(std::string_view microUrl);
 
-std::optional<UrlInfo> WhenNotExpired(const UrlInfo& url);
-
-UrlInfo VisitUrl(UrlInfo& url);
+std::optional<std::reference_wrapper<UrlInfo>> GoodIfNotExpired(UrlInfo& url);
 
 template<typename IdToUrlMap>
 auto TryLookup(IdToUrlMap& m, std::string_view str)

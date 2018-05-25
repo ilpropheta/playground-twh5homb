@@ -26,7 +26,6 @@ public:
 	template<typename OnClick>
 	void ClickUrl(std::string_view microUrl, OnClick onClick);
 
-// { autofold
 	std::optional<UrlInfo> Stats(std::string_view microUrl) const;
 
 	template<typename Action>
@@ -42,7 +41,6 @@ void MicroUrlService::VisitMicroUrls(Action action) const
 	for (auto& p : m_idToUrl) // not using structure bindings
 		action(p.second);     // to avoid 'unused variable' warning
 }
-// }
 
 template<typename OnClick>
 void MicroUrlService::ClickUrl(std::string_view microUrl, OnClick onClick)
@@ -52,7 +50,7 @@ void MicroUrlService::ClickUrl(std::string_view microUrl, OnClick onClick)
 	{
 		auto& urlRef = opt->get();
 		urlRef.Clicks++;
-		if (auto ne = WhenNotExpired(*opt); ne)
+		if (auto ne = GoodIfNotExpired(*opt); ne)
 			status = *ne;
 		else
 			status = ExpiredUrl{ std::chrono::system_clock::now() - urlRef.Expiration };

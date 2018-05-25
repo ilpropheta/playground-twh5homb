@@ -22,8 +22,8 @@ std::optional<std::string> MicroUrlService::ClickUrl(std::string_view microUrl)
 {
 	return
 		TryLookup(m_idToUrl, microUrl)
-		|| WhenNotExpired
-		|| VisitUrl
+		|| GoodIfNotExpired
+		|| [](UrlInfo& url) { url.Clicks++; return url; }
 		|| &UrlInfo::OriginalUrl;
 }
 
