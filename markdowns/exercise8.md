@@ -7,7 +7,7 @@
 ## Hands on!
 
 @[Use `optional` to handle invalid urls]({"stubs": [ 
-	 "microurl/src/ver9/utils.cpp",
+	 "microurl/src/ver9/Utils.cpp",
 	 "microurl/src/ver9/MicroUrlService.h",	
 	 "microurl/src/ver9/MicroUrlService.cpp",
 	 "microurl/src/ver9/tests/UrlInfoTest.cpp",
