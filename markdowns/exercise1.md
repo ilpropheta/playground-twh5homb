@@ -81,6 +81,11 @@ shared_ptr<Resource> owner1 = Acquire();
 
 `weak_ptr` models temporary ownership: when an object needs to be accessed only if it exists, and it may be deleted at any time by someone else, `weak_ptr` is used to track the object, and it is converted to `shared_ptr` to assume temporary ownership. If the original `shared_ptr` is destroyed at this time, the object's lifetime is extended until the temporary `shared_ptr` is destroyed as well.
 
+Continue Reading:
+
+* [Microsoft on Smart Pointers](https://msdn.microsoft.com/en-us/library/hh279674.aspx)
+* [Smart developers use smart pointers](https://www.fluentcpp.com/2017/08/22/smart-developers-use-smart-pointers-smart-pointers-basics/)
+
 ### Hands on!
 
 You've just learnt how good smart pointers are and you want to impress your boss by using them in **MicroUrl**.
