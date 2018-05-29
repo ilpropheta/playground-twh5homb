@@ -8,7 +8,7 @@ From [The C++ Standard Library - A Tutorial and Reference, 2nd Edition - by Nico
 
 `std::chrono` is a precision-neutral library (coming from Boost) merged into C++11. It was designed to be able to deal with the fact that timers and clocks might be different on different operating systems and improve over time in precision. The goal was to provide a precision-neutral concept by separating duraton and point of time ("timepoint") from specific clocks. As a result, the core of the chrono library consists of the following types or concepts, which serve as abstract mechanisms to specify and deal with points in and durations of time:
 
-* A **duration** of time is defined as a specific number of ticks over a time unit (e.g. "3 minutes" is "3 ticks of a minute").
+* A **duration** of time is defined as a specific number of ticks over a time unit (e.g. "3 minutes" is "3 ticks of a minute"). A duration consists of a **count of ticks** of a certain type (e.g. `int`) and a **tick period**, where the tick period is a compile-time rational constant representing *the number of seconds from one tick to the next*.
 * A **timepoint** is defined as combination of a duration and a beginning of time (*epoch*).
 * The concept of a timepoint, however, is parametrized by a **clock**, which is the object that defines the epoch of a timepoint.
 
