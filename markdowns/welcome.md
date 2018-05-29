@@ -57,4 +57,7 @@ This first excercise is just to stretch your hands and let you explore the envir
 
 Change the following function accordingly and make the test pass:
 
-@[Fix MicroUrlService.cpp]({"stubs": ["microurl/src/ver1/MicroUrlService.cpp", "microurl/src/ver1/MicroUrlService.h", "microurl/src/ver1/tests/NiceToMeetYou.cpp"],"command": "sh /project/target/run_test.sh ver1"})
+@[Fix MicroUrlService.cpp]({"stubs": [
+    "microurl/src/ver1/tests/NiceToMeetYou.cpp",
+    "microurl/src/ver1/MicroUrlService.cpp", 
+    "microurl/src/ver1/MicroUrlService.h"],"command": "sh /project/target/run_test.sh ver1"})
