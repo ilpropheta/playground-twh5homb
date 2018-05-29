@@ -130,7 +130,7 @@ You have a pending refactoring. It's time to get back and finish your work:
 @[Use structure bindings]({"stubs": [
 	 "microurl/src/ver4/tests/UrlInfoTest.cpp",
 	 "microurl/src/ver4/MicroUrlInfo.h",
-	 "microurl/src/ver4/tests/MicroUrlService.h",
+	 "microurl/src/ver4/MicroUrlService.h"
 	],
 	"command": "sh /project/target/run_test.sh ver4 [binding]"})
 
