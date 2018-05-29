@@ -56,8 +56,8 @@ More specifically, a type is destructurable if:
    * must be direct members of the type or members of the same public base class of the type
    * Cannot be anonymous unions
 * or, it has: 
-   * an obj.get<>() method or an ADL-able get<>(obj) overload
-   * specializations of std::tuple_size<> and std::tuple_element<>
+   * an `obj.get<>()` method or an ADL-able `get<>(obj)` overload
+   * specializations of `std::tuple_size<>` and `std::tuple_element<>`
 
 **Important detail**: The portion of the declaration preceding `[` applies to the hidden variable `e`, not to the introduced identifiers.
 
@@ -68,7 +68,10 @@ auto [z, w] = std::tie(a, b);        // z and w are still of type int&
 assert(&z == &a);                    // passes
 ```
 
-[More details](http://en.cppreference.com/w/cpp/language/structured_binding)
+Continue Reading:
+
+- [Reference](http://en.cppreference.com/w/cpp/language/structured_binding)
+- [Adding C++17 structured bindings support to your classes](https://blog.tartanllama.xyz/structured-bindings/)
 
 ## `std::tie` idiom
 
