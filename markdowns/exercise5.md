@@ -80,7 +80,7 @@ struct lambda12384950_t
     {
         return i%2 == 1;
     }
-};
+} lambda12384950;
 ```
 
 As you will learn in a moment, lambdas can *capture* variables in outer and global scopes, becoming **stateful**:
