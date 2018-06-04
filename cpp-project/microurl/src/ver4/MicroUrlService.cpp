@@ -25,7 +25,7 @@ std::string MicroUrlService::ClickUrl(const char* microUrl)
 	return url.OriginalUrl;
 }
 
-UrlInfo MicroUrlService::Stats(const char* microUrl) const
+UrlInfo MicroUrlService::Stats(const std::string& microUrl) const
 {
 	string strMicro(microUrl);
 	auto secret = strMicro.substr(strMicro.find_last_of('/') + 1);

@@ -13,7 +13,7 @@ public:
 
 	std::string MakeMicroUrl(const char* url);
 	std::string ClickUrl(const char* microUrl);
-	UrlInfo Stats(const char* microUrl) const;
+	UrlInfo Stats(const std::string& microUrl) const;
 private:
 	DbIdGenerator* m_idGenerator;
 	std::unordered_map<long, UrlInfo> m_idToUrl;
