@@ -36,9 +36,9 @@ Continue reading:
 
 Jane, our Chief Marketing Officer, has just came back from *CppCon* where she heard about `std::string_view` during a coffee break. She is keen on selling to our investors that **Gugol** is already using such C++17 feature into our codebase.
 
-All things considered, this request is not so silly. There are a few places where `std::string_view` could be really a good fit.
+All things considered, this request is not so silly. The service's interface seems a bit inconsistent: it takes `const char*` but in `Stats` that takes `const string&`. `std::string_view` could be really a good fit to improve the interface and also to avoid copying...
 
-Work on `MicroUrlService` and replace `const char*` with `std::string_view` on its public functions. Decomment some lines in `StringViewTest.cpp` and make it work.
+Work on `MicroUrlService` and uniform the parameters of its public functions. Decomment some lines in `StringViewTest.cpp` and make it work.
 
 @[Replace const char* with std::string_view on our service's interface]({"stubs": [
 	 "microurl/src/ver5/MicroUrlService.h",
