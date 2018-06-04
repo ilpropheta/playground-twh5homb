@@ -20,16 +20,9 @@ public:
 	UrlInfo Stats(std::string_view microUrl) const;
 // }
 
-	template<typename Action>
-	void VisitMicroUrls(Action action) const;
+	//...write a visit-like function here...;
 
 private:
 	std::unique_ptr<IIdGenerator> m_idGenerator;
 	std::unordered_map<long, UrlInfo> m_idToUrl;
 };
-
-template<typename Action>
-void MicroUrlService::VisitMicroUrls(Action action) const
-{
-	throw std::logic_error("missing function");
-}

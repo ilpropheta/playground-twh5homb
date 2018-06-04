@@ -39,7 +39,7 @@ TEST_CASE("Using Visit to count the most popular urls", "Can you pass stateful v
 
 
 	CounterVisitor visitor;
-	service.VisitMicroUrls(visitor);
+	//service...yourVisitFunction(visitor);
 
 	REQUIRE(visitor.MostPopular() == "http://italiancpp.org");
 }
