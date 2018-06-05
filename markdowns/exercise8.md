@@ -1,6 +1,6 @@
 # Wrap up
 
-[!](https://upload.wikimedia.org/wikipedia/it/thumb/4/46/Dicapriogatsby.JPG/1200px-Dicapriogatsby.JPG)
+![Congratulations!](https://upload.wikimedia.org/wikipedia/it/thumb/4/46/Dicapriogatsby.JPG/1200px-Dicapriogatsby.JPG)
 
 You have done a great job! I hope you have enjoyed the workshop.
 
@@ -16,5 +16,10 @@ We have met strong ideas that are likely always true and other concepts whose us
 
 * **RAII** is probably the most important idiom in C++ and **smart pointers** are general-purpose tools implementing such idiom
    * the general rule is: don't let plain pointers own resources;
-* **Interfaces** are powerful building block of object oriented programming. Although the support for interfaces in C++ is not explicit as in other languages, learn the idioms to build them correctly and safely. In addition, you can combine them with smart pointers when you need to craft **factory functions**;
-* 
+* **Interfaces** are powerful building block of object oriented programming. Although the support for interfaces in C++ is not explicit as in other languages, learn the idioms to build them correctly and safely. In addition, you can use smart pointers to effectively craft **factory functions**;
+* **tuples** and **structure bindings** are useful to manipulate structured data with common functions and idioms. Along the way, you have learnt `std::tie might` idiom to easily and efficiently turn data into a "light" tuple (tuple of references);
+* **string_view** is a powerful tool for **referencing** sequences of chars as `std::string`-like readonly objects;
+* the introduction of **lambdas** revolutionized how we write code in C++, with the first effect of empowering the usage of STL algorithms. In addition, it opens to scenarios where functional programming could be a good fit. We cannot really speak of "functional programming" but it's a very good start;
+* we have many ways and paradigms for handling errors in C++ (and, generally, in software). `std::optional` is a "monadic" way for encapsulating errors and missing values. It's a *vocabulary type*, meaning that it's the default way to express *nullable values semantics*.
+ 
+See you next time!
