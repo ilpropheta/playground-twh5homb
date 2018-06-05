@@ -16,7 +16,7 @@ plan:
   statement: markdowns/exercise6.md
 - title: Making urls expire
   statement: markdowns/exercise7.md
-- title: Handling different url access status
+- title: Wrap up
   statement: markdowns/exercise8.md
   
 projects:
