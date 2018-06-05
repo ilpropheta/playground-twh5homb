@@ -19,7 +19,7 @@ We have met strong ideas that are likely always true and other concepts whose us
 * **Interfaces** are powerful building block of object oriented programming. Although the support for interfaces in C++ is not explicit as in other languages, learn the idioms to build them correctly and safely. In addition, you can use smart pointers to effectively craft **factory functions**;
 * **tuples** and **structure bindings** are useful to manipulate structured data with common functions and idioms. Along the way, you have learnt `std::tie might` idiom to easily and efficiently turn data into a "light" tuple (tuple of references);
 * **string_view** is a powerful tool for **referencing** sequences of chars as `std::string`-like readonly objects;
-* the introduction of **lambdas** revolutionized how we write code in C++, with the first effect of empowering the usage of STL algorithms. In addition, it opens to scenarios where functional programming could be a good fit. We cannot really speak of "functional programming" but it's a very good start;
-* we have many ways and paradigms for handling errors in C++ (and, generally, in software). `std::optional` is a "monadic" way for encapsulating errors and missing values. It's a *vocabulary type*, meaning that it's the default way to express *nullable values semantics*.
+* the introduction of **lambdas** revolutionized how we write code in C++, with the first effect of empowering the usage of STL algorithms ("no more excuses"). In addition, it opens to scenarios where functional programming could be a good fit. We cannot really speak of "functional programming" but it's a very good start;
+* we have many ways and paradigms for handling errors in C++ (and, generally, in software). `std::optional` is a "monadic" way for encapsulating errors and missing values. It's a *vocabulary type*, meaning that it's the default way to express *nullable value semantics*.
  
 See you next time!
