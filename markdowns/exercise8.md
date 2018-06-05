@@ -1,5 +1,7 @@
 # Wrap up
 
+[!](https://upload.wikimedia.org/wikipedia/it/thumb/4/46/Dicapriogatsby.JPG/1200px-Dicapriogatsby.JPG)
+
 You have done a great job! I hope you have enjoyed the workshop.
 
 The best is yet to come: you should delve into the topics you liked the most and practice a bit more. Possibly, a second part of this workshop will follow up in a few months, including other interesting concepts and idioms of post-modern C++.
