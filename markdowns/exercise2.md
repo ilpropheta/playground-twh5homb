@@ -30,9 +30,9 @@ public:
 This can be avoided only if you are really sure that this class will never be deleted polymorphically. This is a polymorphic deletion:
 
 ```cpp
-Interface* int = Factory::Create(); // will craft an instance of some concrete implementation
+Interface* base = Factory::Create(); // will craft an instance of some concrete implementation
 //...
-delete int; // undefined behavior if Interface's destructor is not virtual
+delete base; // undefined behavior if Interface's destructor is not virtual
 ```
 
 Many years ago, **Herb Sutter** elaborated a neat guideline:
