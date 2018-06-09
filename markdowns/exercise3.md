@@ -1,5 +1,15 @@
 # Structure bindings and tuple tricks
 
+## `std::tuple`
+
+A fixed-size collection of heterogeneous values. Basically, the vocabulary type for structured values.
+ 
+```cpp
+tuple<string, int, bool> nameAgeChecked = {"marco", 30, true};
+```
+
+tuples are powerful for giving the same generic interface to structured data. Sometimes you can just wrap data into tuples and operate on them in a uniform way.
+
 ## Structure Bindings
 
 C++17 introduces the possibility to decompose tuple-like objects into **references** to their componenents:
@@ -13,7 +23,6 @@ auto __tmp = make();
 auto& a = get<0>(__tmp);
 auto& b = get<1>(__tmp);
 auto& c = get<2>(__tmp);
-/* merely equivalent to:
 */
 ```
 
