@@ -12,7 +12,7 @@ I don't know your C++ level, maybe the most part of this workshop has been easy 
 
 After this workshop you might have new arrows available into your quiver. C++ does not have absolute rules though, we can just try narrowing down the range of alternatives with openness to new tools and with balancing compromises. As Bruce Lee used to say: *the best fighter is someone who can adapt on any style*, that we can reshape as *the best C++ programmer is someone who can adapt on any paradigm*. Post-Modern C++ is about pondering a mixture of styles, idioms and paradigms. 
 
-Some concepts we have met have been grown up in the C++ ecosystem for decades, meaning that we have many strong guidelines to apply, almost blindly. For example the **RAII** idiom, a general-purpose rule for managing any kind of dynamic resources.
+Some concepts we have met have been growing up in the C++ ecosystem for decades, meaning that we have many strong guidelines to apply, almost blindly. For example the **RAII** idiom, a general-purpose rule for managing any kind of dynamic resources.
 Other concepts are more debatable and open to balancing compromises, and often they imply a certain style. For instance, `std::optional`, that has been in the industry (and in many other languages) for many years, and that comes with functional programming and monads.
 
 Let's recap the topics we have met so far:
