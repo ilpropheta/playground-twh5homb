@@ -87,7 +87,7 @@ std::string to_string(std::string_view sv)
 ```
 :::
 	
-## Bonus Track: avoid temporary strings	in map lookups
+## Bonus: avoid temporary strings in map lookups
 
 IT is worried that our service accepts too many requests per second and they decided to implement a very simple load balancing strategy to split the work among several service instances. You know it cannot scale but you decide to help optimize it a bit, in the meantime some people of your team will develop a better strategy.
 
