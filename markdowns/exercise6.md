@@ -21,7 +21,7 @@ In C++ there are too many ways to manage errors that it's very hard to state whi
 * bool flags
 * error listeners/receivers (similar to visitors)
 
-Instead of analysing all the options above, I'd like to introduce you another way to handle failures you should know about.
+I will not compare those, instead I'd like to introduce you another way to handle failures coming from the algebraic data type system.
 
 ## `optional<T>`
 
